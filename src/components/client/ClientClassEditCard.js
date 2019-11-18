@@ -1,16 +1,16 @@
 import React from "react";
 
-function ClassCard() {
+function ClientClassEditCard() {
   return (
     <div className="card mb-4">
       <div className="card-body">
-        <div class="d-flex flex-row justify-content-between">
+        <div className="d-flex flex-row justify-content-between">
           <h5 className="card-title">Fitness Class Name</h5>
           <p>Type</p>
           <p>Location</p>
         </div>
 
-        <p class="card-text">
+        <p className="card-text">
           <span className="text-warning">12:00 - 3:00</span>
         </p>
         <h6 className="card-subtitle mb-2 text-info">Intensity Level</h6>
@@ -21,13 +21,18 @@ function ClassCard() {
         </p>
         <div className="d-flex flex-row justify-content-between">
           <p className="text-primary">4/8</p>
-          <a href="#" class="btn btn-success">
-            Sign up
-          </a>
+          <div className="text-right">
+            <a href="#" className="btn btn-primary mr-2">
+              ReSchedule
+            </a>
+            <a href="#" className="btn btn-danger">
+              Cancel
+            </a>
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
-export default ClassCard;
+export default ClientClassEditCard;
