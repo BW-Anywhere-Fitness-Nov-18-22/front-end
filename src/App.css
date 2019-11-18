@@ -2,9 +2,17 @@
   text-align: center;
 } */
 
-/* .App-logo {
+.App-logo {
   height: 40vmin;
-} */
+  
+}
+
+.App-logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
 /* .App-header {
   background-color: #877f9c;
@@ -20,3 +28,13 @@
 /* .App-link {
   color: #e7eb06;
 } */
+
+
+/* //====SIGNUP STYLES=====// */
+
+.SignUp-Container {
+  margin: 5%;
+  padding: 3%;
+  background: rgb(245, 102, 102);
+  border-radius: 5px;
+}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Route } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -12,7 +13,15 @@ import {
   DropdownMenu,
   DropdownItem } from 'reactstrap';
 
-export function Navigation() {
+import Dashboard from './Dashboard';
+import SignUp from './SignUp';
+// import Classes from './ClassCardContainer';
+import Login from './Login';
+
+
+
+
+export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -24,23 +33,31 @@ export function Navigation() {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
-          {/* <li><NavLink exact to={'/'}>Home</NavLink></li>
-//                     <li><NavLink to={'/classes'}>Classes</NavLink></li>
-//                     <li><NavLink to={'/Sign-Up'}>Sign-Up</NavLink></li>
-//                     <li><NavLink to={'/Login'}>Login</NavLink></li> */}
+         
             <NavItem>
-              <NavLink href="/components/">Components</NavLink>
+                <NavLink exact to={'/'}>Home</NavLink>
+                <Route exact path='/' component={Dashboard} />
             </NavItem>
             <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                <NavLink to={'/classes'}>Classes</NavLink>
+                {/* <Route exact path='/classes' component={ClassCardContainer} /> */}
             </NavItem>
+            <NavItem>
+                <NavLink to={'/Sign-Up'}>Sign-Up</NavLink>
+                <Route exact path='/Sign-Up' component={SignUp} />
+            </NavItem>
+            <NavItem>
+                <NavLink to={'/Login'}>Login</NavLink>
+                <Route exact path='/Sign-Up' component={Login} />
+            </NavItem>
+
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
                 Options
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>
-                  Option 1
+                <NavLink href="https://github.com/orgs/BW-Anywhere-Fitness-Nov-18-22/dashboard">GitHub</NavLink>
                 </DropdownItem>
                 <DropdownItem>
                   Option 2
