@@ -6,6 +6,14 @@ export default function SignUp(props) {
         <div className="SignUp-Container">
             <Form>
                 <FormGroup>
+                    <Label for="exampleName">Name:</Label>
+                    <Input type="text" name="name" id="name" placeholder="Josemaria" />
+                </FormGroup>
+                <FormGroup>
+                    <Label for="exampleSurname">Surname:</Label>
+                    <Input type="text" name="name" id="name" placeholder="DaCosta" />
+                </FormGroup>
+                <FormGroup>
                     <Label for="exampleEmail">Email:</Label>
                     <Input type="email" name="email" id="exampleEmail" placeholder="JonDoe@gmail.com" />
                 </FormGroup>

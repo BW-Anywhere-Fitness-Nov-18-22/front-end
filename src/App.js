@@ -8,6 +8,12 @@ import SignUp from './components/SignUp';
 function App() {
   return (
     <div>
+       <Navigation />
+
+{/* logo
+ */}
+
+<SignUp />
     </div>
   );
 }
