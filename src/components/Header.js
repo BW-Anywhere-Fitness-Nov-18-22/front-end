@@ -36,7 +36,7 @@ export default function Navigation() {
          
             <NavItem>
                 <NavLink exact to={'/'}>Home</NavLink>
-                <Route exact path='/' component={Dashboard} />
+                {/* <Route exact path='/' component={Dashboard} /> */}
             </NavItem>
             <NavItem>
                 <NavLink to={'/classes'}>Classes</NavLink>
