@@ -1,8 +1,8 @@
 import React from 'react';
-import Logo from './logoFile.png';
+import logo from './../logoFile.png';
 
 export default function AFLogoFxn() {
     return(
-        <img src={Logo} alt="Brand Logo for Anywhere Fitness" />
+        <img src={logo} className="logo" alt="Brand Logo for Anywhere Fitness" />
     )
 }
