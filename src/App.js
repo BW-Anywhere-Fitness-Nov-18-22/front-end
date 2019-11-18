@@ -7,18 +7,7 @@ import SignUp from './components/SignUp';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-
-        <Navigation />
-
-        <div className="App-logo-container">
-          <img src={logo} className="App-logo" alt="logo" />
-        </div>
-
-        <SignUp />
-
-      </header>
+    <div>
     </div>
   );
 }
