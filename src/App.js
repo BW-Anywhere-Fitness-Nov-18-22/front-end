@@ -1,13 +1,13 @@
 import React from 'react';
 import logo from './logo.svg';
-import { Nav } from './components/Header'
+import { Navigation } from './components/Header'
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Nav />
+        <Navigation />
         <img src={logo} className="App-logo" alt="logo" />
         <a
           className="App-link"
