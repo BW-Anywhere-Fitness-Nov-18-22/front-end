@@ -6,7 +6,7 @@ function InstructorClassCardContainer() {
   return (
     <Container>
       <div className="text-center">
-        <a href="#" className="btn btn-primary mb-3 w-100">
+        <a href="#" className="btn btn-primary mb-3 .btn-block btn-lg w-100">
           Add Class
         </a>
       </div>
