@@ -14,8 +14,8 @@ export default function SignUp(props) {
                     <Input type="password" name="password" id="examplePassword" placeholder="$PAssword124" />
                 </FormGroup>
                 <FormGroup>
-                    <Label for="instructorCode">instructorCode:</Label>
-                    <Input type="instructorCode" name="instructorCode" id="instructorCode" placeholder="(Instructors Only)" />
+                    {/* <Label for="instructorCode">instructorCode:</Label>
+                    <Input type="instructorCode" name="instructorCode" id="instructorCode" placeholder="(Instructors Only)" /> */}
                 </FormGroup>
                 <div className="text-right">
                     <Button>Submit</Button>
