@@ -1,16 +1,26 @@
 import React from "react";
-import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { Button } from "reactstrap";
+import { withFormik, Form, Field } from "formik";
 
-function RescheduleClass() {
+function RescheduleClass(props) {
+    
   return (
     <Form>
-      <FormGroup>
-        <Label for="datetime">New Time</Label>
-        <Input type="datetime-local" name="datetime" id="datetime" />
-      </FormGroup>
+      <div className="form-group">
+        <label htmlFor="datetime">New Date/Time</label>
+        <Field type="datetime-local" name="datetime" id="datetime" className="form-control"/>
+      </div>
       <Button color="success">Submit</Button>
     </Form>
   );
 }
 
-export default RescheduleClass;
+const RescheduleClassWFormik = withFormik({
+    mapPropsToValues() {
+        return {
+            datetime: ""
+        }
+    } 
+})(RescheduleClass)
+
+export default RescheduleClassWFormik;

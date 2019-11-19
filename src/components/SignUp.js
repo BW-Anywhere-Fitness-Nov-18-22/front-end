@@ -1,34 +1,72 @@
-import React from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import React from "react";
+import { Button } from "reactstrap";
+import { withFormik, Form, Field } from "formik";
 
-export default function SignUp(props) {
-    return (
-        <div className="SignUp-Container">
-            <Form>
-                <FormGroup>
-                    <Label for="exampleName">Name:</Label>
-                    <Input type="text" name="name" id="name" placeholder="Josemaria" />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="exampleSurname">Surname:</Label>
-                    <Input type="text" name="name" id="name" placeholder="DaCosta" />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="exampleEmail">Email:</Label>
-                    <Input type="email" name="email" id="exampleEmail" placeholder="JonDoe@gmail.com" />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="examplePassword">Password:</Label>
-                    <Input type="password" name="password" id="examplePassword" placeholder="$PAssword124" />
-                </FormGroup>
-                <FormGroup>
-                    {/* <Label for="InstructorCode">instructorCode:</Label>
-                    <Input type="instructorCode" name="instructorCode" id="instructorCode" placeholder="(Instructors Only)" /> */}
-                </FormGroup>
-                <div className="text-right">
-                    <Button>Submit</Button>
-                </div>
-            </Form>
+function SignUp(props) {
+  return (
+    <div className="SignUp-Container">
+      <Form>
+        <div className="form-group">
+          <label htmlFor="firstname">First Name:</label>
+          <Field
+            className="form-control"
+            type="text"
+            name="firstname"
+            id="firstname"
+            placeholder="Josemaria"
+          />
         </div>
-    )
+        <div className="form-group">
+          <label htmlFor="lastname">Last Name:</label>
+          <Field
+            className="form-control"
+            type="text"
+            name="lastname"
+            id="lastname"
+            placeholder="DaCosta"
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="email">Email:</label>
+          <Field
+            className="form-control"
+            type="email"
+            name="email"
+            id="email"
+            placeholder="JonDoe@gmail.com"
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Password:</label>
+          <Field
+            className="form-control"
+            type="password"
+            name="password"
+            id="password"
+            placeholder="$PAssword124"
+          />
+        </div>
+        <div className="form-group">
+          {/* <label htmlFor="InstructorCode">instructorCode:</label>
+                    <Input type="instructorCode" name="instructorCode" id="instructorCode" placeholder="(Instructors Only)" /> */}
+        </div>
+        <div className="text-right">
+          <Button>Submit</Button>
+        </div>
+      </Form>
+    </div>
+  );
 }
+
+const SignUpWFormik = withFormik({
+  mapPropsToValues() {
+    return {
+      firstname: "",
+      lastname: "",
+      email: "",
+      password: ""
+    };
+  }
+})(SignUp);
+
+export default SignUpWFormik;
