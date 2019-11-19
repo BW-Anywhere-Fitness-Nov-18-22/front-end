@@ -1,8 +1,16 @@
 import React from "react";
 import { Button } from "reactstrap";
 import { withFormik, Form, Field } from "formik";
+import axios from "axios";
+
+const baseUrl =
+process.env.NODE_ENV === "production"
+  ? "https://bw4-anywhere-fitness.herokuapp.com/"
+  : "http://localhost:4000";
+
 
 function SignUp(props) {
+
   return (
     <div className="SignUp-Container">
       <Form>
@@ -47,8 +55,14 @@ function SignUp(props) {
           />
         </div>
         <div className="form-group">
-          {/* <label htmlFor="InstructorCode">instructorCode:</label>
-                    <Input type="instructorCode" name="instructorCode" id="instructorCode" placeholder="(Instructors Only)" /> */}
+          <label htmlFor="InstructorCode">InstructorCode:</label>
+          <input
+            type="authCode"
+            name="authCode"
+            id="instructorCode"
+            placeholder="(Instructors Only)"
+            className="form-control"
+          />
         </div>
         <div className="text-right">
           <Button>Submit</Button>
@@ -64,8 +78,28 @@ const SignUpWFormik = withFormik({
       firstname: "",
       lastname: "",
       email: "",
-      password: ""
+      password: "",
+      authCode: ""
     };
+  },
+
+  handleSubmit(values, tools) {
+      console.log(values);
+      
+    const payload = {
+      firstName: values.firstname,
+      lastName: values.lastname,
+      email: values.email,
+      password: values.password,
+      role: values.authCode === 1234 ? "instructor" : "client"
+    };
+
+    console.log(payload)
+    
+    axios.post(baseUrl + "/api/auth/register", payload).then(response => {
+      localStorage.setItem("token", response.data.token);
+      // props.history.posh('/client')
+    });
   }
 })(SignUp);
 
