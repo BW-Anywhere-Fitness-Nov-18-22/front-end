@@ -110,7 +110,31 @@ const InstructorsAddClassWFormik = withFormik({
     className: Yup.string().required("Please enter the class name"),
     classType: Yup.string().required("Select a class type"),
     intensityLevel: Yup.string().required("Select a intensity level")
-  })
+  }),
+
+  handleSubmit(values, tools) {
+    const baseUrl = process.env.NODE_ENV === 'production' ? 'https://bw4-anywhere-fitness.herokuapp.com/' : 'http://localhost:4000';
+    const payload = {
+      type: values.classType,
+      date: values.startTime,
+      startTime: values.startTime,
+      duration: values.duration,
+      intensityLevel: values.intensityLevel,
+      location: values.location,
+      registeredAttendees: 0,
+      maxClassSize: values.maxClassSize,
+      instructorId: 3, // supposed to come from states or local storage, then send to database
+    }
+    axios.post(baseUrl + '/api/class', payload)
+      .then(res => {
+        console.log(res.data);
+        tools.resetForm();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+  
 })(InstructorsAddClass);
 
 export default InstructorsAddClassWFormik;
