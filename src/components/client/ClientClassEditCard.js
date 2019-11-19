@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import { Modal, ModalBody, ModalHeader } from "reactstrap";
+import RescheduleClassWFormik from "./RescheduleClass";
 
 function ClientClassEditCard() {
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
+
   return (
     <div className="card mb-4">
       <div className="card-body">
@@ -22,7 +27,7 @@ function ClientClassEditCard() {
         <div className="d-flex flex-row justify-content-between">
           <p className="text-primary">4/8</p>
           <div className="text-right">
-            <a href="#" className="btn btn-primary mr-2">
+            <a href="#" className="btn btn-primary mr-2" onClick={toggle}>
               ReSchedule
             </a>
             <a href="#" className="btn btn-danger">
@@ -31,6 +36,13 @@ function ClientClassEditCard() {
           </div>
         </div>
       </div>
+
+      <Modal fade={false} isOpen={modal} toggle={toggle}>
+        <ModalHeader>Edit your class</ModalHeader>
+        <ModalBody>
+          <RescheduleClassWFormik />
+        </ModalBody>
+      </Modal>
     </div>
   );
 }
