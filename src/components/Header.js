@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -34,22 +32,20 @@ export default function Navigation() {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
          
-            <NavItem>
-                <NavLink exact to={'/'}>Home</NavLink>
+            <li className="nav-item">
+                <NavLink exact to='/' className="nav-link">Home</NavLink>
                 {/* <Route exact path='/' component={Dashboard} /> */}
-            </NavItem>
-            <NavItem>
-                <NavLink to={'/classes'}>Classes</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink to='/classes' className="nav-link">Classes</NavLink>
                 {/* <Route exact path='/classes' component={ClassCardContainer} /> */}
-            </NavItem>
-            <NavItem>
-                <NavLink to={'/Sign-Up'}>Sign-Up</NavLink>
-                <Route exact path='/Sign-Up' component={SignUp} />
-            </NavItem>
-            <NavItem>
-                <NavLink to={'/Login'}>Login</NavLink>
-                <Route exact path='/Sign-Up' component={Login} />
-            </NavItem>
+            </li>
+            <li className="nav-item">
+                <NavLink to='/register' className="nav-link">Sign-Up</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink to='/login' className="nav-link">Login</NavLink>
+            </li>
 
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
@@ -57,7 +53,7 @@ export default function Navigation() {
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>
-                <NavLink href="https://github.com/orgs/BW-Anywhere-Fitness-Nov-18-22/dashboard">GitHub</NavLink>
+                <NavLink to="https://github.com/orgs/BW-Anywhere-Fitness-Nov-18-22/dashboard">GitHub</NavLink>
                 </DropdownItem>
                 <DropdownItem>
                   Option 2
