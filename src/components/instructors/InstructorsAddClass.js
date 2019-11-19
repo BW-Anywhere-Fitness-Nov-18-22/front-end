@@ -1,85 +1,116 @@
 import React from "react";
-import {
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  Col,
-  Row,
-  Container,
-  CustomInput
-} from "reactstrap";
+import { Button } from "reactstrap";
+import { withFormik, Form, Field } from "formik";
+import * as Yup from "yup";
+import axios from "axios";
 
-function InstructorsAddClass() {
+function InstructorsAddClass(props) {
+
   return (
     <Form>
-      <FormGroup>
-        <Label for="name">Class Name</Label>
-        <Input type="text" name="name" id="name" />
-      </FormGroup>
-      <FormGroup>
-        <Label for="type">Class Type</Label>
-        <Input type="select" name="type" id="type">
+      <div className="form-group">
+        <label htmlFor="name">Class Name</label>
+        <Field
+          className="form-control"
+          type="text"
+          name="className"
+          id="name"
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="type">Class Type</label>
+        <Field as="select" name="classType" id="type" className="form-control">
           <option>Yoga</option>
           <option>Spin Class</option>
           <option>Weight Lifting</option>
           <option>Power Lifting</option>
-        </Input>
-      </FormGroup>
-      <FormGroup>
-        <Label for="intensity">Intensity Level</Label>
-        <Input type="select" name="intensity" id="intensity">
+        </Field>
+      </div>
+      <div className="form-group">
+        <label htmlFor="intensity">Intensity Level</label>
+        <Field
+          as="select"
+          className="form-control"
+          name="intensityLevel"
+          id="intensity"
+        >
           <option>Beginner</option>
           <option>Intermediate</option>
           <option>Advanced</option>
-        </Input>
-      </FormGroup>
-      <FormGroup>
-        <Label for="datetime">Start Time</Label>
-        <Input type="datetime-local" name="datetime" id="datetime" />
-      </FormGroup>
-      <FormGroup>
-        <Label for="duration">Duration</Label>
-        <div>
-          <CustomInput
-            type="radio"
-            id="duration"
-            name="duration"
-            label="30 Minutes"
-          />
-          <CustomInput
-            type="radio"
-            id="duration2"
-            name="duration"
-            label="45 Minutes"
-          />
-          <CustomInput
-            type="radio"
-            id="duration3"
-            name="duration"
-            label="1 hour"
-          />
-        </div>
-      </FormGroup>
-      <FormGroup>
-          <Label for="maxClassSize">Max Class Size</Label>
-          <Input type="number" id="maxClassSize" min="5" max="200"/>
-      </FormGroup>
+        </Field>
+      </div>
+      <div className="form-group">
+        <label htmlFor="datetime">Start Time</label>
+        <Field
+          className="form-control"
+          type="datetime-local"
+          name="startTime"
+          id="datetime"
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="duration">Duration</label>
+        <Field
+          as="select"
+          className="form-control"
+          name="duration"
+          id="duration"
+        >
+          <option>30 Minutes</option>
+          <option>45 Minutes</option>
+          <option>1 Hour</option>
+        </Field>
+      </div>
 
-      <FormGroup>
-        <Label for="location">Location</Label>
-        <Input
+      <div className="form-group">
+        <label htmlFor="maxClassSize">Max Class Size</label>
+        <Field
+          className="form-control"
+          type="number"
+          id="maxClassSize"
+          name="maxClassSize"
+          min="5"
+          max="200"
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="location">Location</label>
+        <Field
+          className="form-control"
           type="text"
           name="location"
           id="location"
           placeholder="1234 Main St"
         />
-      </FormGroup>
-      
-      <Button color="success">Submit</Button>
+      </div>
+
+      <Button color="success" type="submit">
+        Submit
+      </Button>
     </Form>
   );
 }
 
-export default InstructorsAddClass;
+const InstructorsAddClassWFormik = withFormik({
+  mapPropsToValues() {
+    return {
+      className: "",
+      classType: "Yoga",
+      intensityLevel: "Beginner",
+      startTime: "",
+      duration: "30 Minutes",
+      maxClassSize: "",
+      location: ""
+    };
+  },
+
+  validationSchema: Yup.object().shape({
+    className: Yup.string().required("Please enter the class name"),
+    classType: Yup.string().required("Select a class type"),
+    intensityLevel: Yup.string().required("Select a intensity level")
+  })
+})(InstructorsAddClass);
+
+export default InstructorsAddClassWFormik;
