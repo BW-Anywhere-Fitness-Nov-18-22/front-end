@@ -4,13 +4,12 @@ import { withFormik, Form, Field } from "formik";
 import axios from "axios";
 
 const baseUrl =
-process.env.NODE_ENV === "production"
-  ? "https://bw4-anywhere-fitness.herokuapp.com/"
-  : "http://localhost:4000";
-
+  process.env.NODE_ENV === "production"
+    ? "https://bw4-anywhere-fitness.herokuapp.com/"
+    : "http://localhost:4000";
 
 function SignUp(props) {
-
+    
   return (
     <div className="SignUp-Container">
       <Form>
@@ -55,17 +54,17 @@ function SignUp(props) {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="InstructorCode">InstructorCode:</label>
-          <input
-            type="authCode"
+          <label htmlFor="authCode">InstructorCode:</label>
+          <Field
+            type="number"
             name="authCode"
-            id="instructorCode"
+            id="authCode"
             placeholder="(Instructors Only)"
             className="form-control"
           />
         </div>
         <div className="text-right">
-          <Button>Submit</Button>
+          <Button type="submit">Submit</Button>
         </div>
       </Form>
     </div>
@@ -84,8 +83,7 @@ const SignUpWFormik = withFormik({
   },
 
   handleSubmit(values, tools) {
-      console.log(values);
-      
+
     const payload = {
       firstName: values.firstname,
       lastName: values.lastname,
@@ -94,12 +92,16 @@ const SignUpWFormik = withFormik({
       role: values.authCode === 1234 ? "instructor" : "client"
     };
 
-    console.log(payload)
-    
-    axios.post(baseUrl + "/api/auth/register", payload).then(response => {
-      localStorage.setItem("token", response.data.token);
-      // props.history.posh('/client')
-    });
+    const landingUrl =
+      payload.role === "client" ? "/dashboard/client" : "dashboard/instructor";
+
+    axios
+      .post(baseUrl + "/api/auth/register", payload)
+      .then(response => {
+        localStorage.setItem("token", response.data.token);
+        tools.props.history.push(landingUrl);
+      })
+      .catch(error => {});
   }
 })(SignUp);
 
