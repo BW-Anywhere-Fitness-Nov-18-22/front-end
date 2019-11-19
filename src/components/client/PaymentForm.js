@@ -1,7 +1,7 @@
+// import CardForm from 'react-payment/dist/CardForm';
 
-// import { CardForm } from 'react-payment';
  
-// onSubmit: (card) => {
+// export default function OnSubmit (card) {
 //   const { number, exp_month, exp_year, cvc, name, zip } = card;
 //   Stripe.card.createToken({
 //     number,
