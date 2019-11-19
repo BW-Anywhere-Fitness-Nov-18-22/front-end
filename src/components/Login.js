@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 export default function Login(props) {
     return (
@@ -14,8 +14,8 @@ export default function Login(props) {
                     <Input type="password" name="password" id="examplePassword" placeholder="$PAssword124" />
                 </FormGroup>
                 <FormGroup>
-                    <Label for="instructorCode">instructorCode:</Label>
-                    <Input type="instructorCode" name="instructorCode" id="instructorCode" placeholder="(Instructors Only)" />
+                    {/* <Label for="instructorCode">instructorCode:</Label>
+                    <Input type="instructorCode" name="instructorCode" id="instructorCode" placeholder="(Instructors Only)" /> */}
                 </FormGroup>
                 <div className="text-right">
                     <Button>Submit</Button>
