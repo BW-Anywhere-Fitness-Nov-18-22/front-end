@@ -13,7 +13,7 @@ import {
   DropdownMenu,
   DropdownItem } from 'reactstrap';
 
-import Dashboard from './Dashboard';
+// import Dashboard from './Dashboard';
 import SignUp from './SignUp';
 // import Classes from './ClassCardContainer';
 import Login from './Login';
