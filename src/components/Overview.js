@@ -29,7 +29,7 @@ export default function Overview(props) {
                     Filler text that will eventually be some kind of overview or waiver.
                     Filler text that will eventually be some kind of overview or waiver.
                     Filler text that will eventually be some kind of overview or waiver.
-                    
+                    Filler text that will eventually be some kind of overview or waiver.
                 </div>
                 <div className="text-right">
                     <Button>Confirm</Button>
