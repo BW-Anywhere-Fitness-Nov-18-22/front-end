@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from "react";
 import withAuth from "../../axios";
 
+// Added for modal Edit>>>
+import { Container, Modal, ModalBody, ModalHeader } from "reactstrap";
+import InstructorsEditClassWFormik from "./InstructorsEditClass";
+
+
 function InstructorClassCard() {
   const [iClasses, setiClasses] = useState([]);
+  //Added for modal edit>>>
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
+
 
   const baseUrl =
     process.env.NODE_ENV === "production"
@@ -48,12 +57,22 @@ function InstructorClassCard() {
                 {iClass.registeredAttendees}/{iClass.maxClassSize}
               </p>
               <div className="text-right">
-                <a href="#" className="btn btn-primary mr-2">
-                  Edit
-                </a>
-                <a href="#" className="btn btn-danger" onClick={e => deleteClass(iClass.id)}>
+
+                {/* // Edit class modal>>> */}
+                <Container>
+                  <a href="#" className="btn btn-primary mr-2" onClick={toggle}>
+                    Edit
+                  </a>
+                  <Modal fade={false} isOpen={modal} toggle={toggle}>
+                    <ModalHeader>Edit an existing class</ModalHeader>
+                      <ModalBody>
+                        <InstructorsEditClassWFormik toggle={toggle} />
+                      </ModalBody>
+                  </Modal>
+                  <a href="#" className="btn btn-danger" onClick={e => deleteClass(iClass.id)}>
                   Delete
-                </a>
+                  </a>
+                </Container>
               </div>
             </div>
           </div>
@@ -64,3 +83,9 @@ function InstructorClassCard() {
 }
 
 export default InstructorClassCard;
+
+
+
+
+
+
