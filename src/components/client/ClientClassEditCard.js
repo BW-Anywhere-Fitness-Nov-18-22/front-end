@@ -5,6 +5,7 @@ import RescheduleClassWFormik from "./RescheduleClass";
 function ClientClassEditCard() {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
+  function cancelAlert() { alert("Class Canceled"); }
 
   return (
     <div className="card mb-4">
@@ -30,7 +31,7 @@ function ClientClassEditCard() {
             <a href="#" className="btn btn-primary mr-2" onClick={toggle}>
               ReSchedule
             </a>
-            <a href="#" className="btn btn-danger">
+            <a href="#" className="btn btn-danger" onClick={cancelAlert}>
               Cancel
             </a>
           </div>

@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import axios from "axios";
 
 function InstructorsAddClass(props) {
+  function addAlert() { alert("FitnessClass/id Added"); }
 
   return (
     <Form>
@@ -86,7 +87,7 @@ function InstructorsAddClass(props) {
         />
       </div>
 
-      <Button color="success" type="submit">
+      <Button color="success" type="submit" onClick={addAlert}>
         Submit
       </Button>
     </Form>

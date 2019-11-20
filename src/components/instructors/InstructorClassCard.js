@@ -1,6 +1,8 @@
 import React from "react";
 
 function InstructorClassCard() {
+  function cancelAlert() { alert("FitnessClass/id Canceled"); }
+
   return (
     <div className="card mb-4">
       <div className="card-body">
@@ -25,7 +27,7 @@ function InstructorClassCard() {
             <a href="#" className="btn btn-primary mr-2">
               Edit
             </a>
-            <a href="#" className="btn btn-danger">
+            <a href="#" className="btn btn-danger" onClick={cancelAlert}>
               Cancel
             </a>
           </div>

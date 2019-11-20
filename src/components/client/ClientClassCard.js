@@ -1,6 +1,8 @@
 import React from "react";
 
 function ClientClassCard() {
+  function signUpAlert() { alert("FitnessClass/id Added"); }
+
   return (
     <div className="card mb-4">
       <div className="card-body">
@@ -21,7 +23,7 @@ function ClientClassCard() {
         </p>
         <div className="d-flex flex-row justify-content-between">
           <p className="text-primary">4/8</p>
-          <a href="#" className="btn btn-success">
+          <a href="#" className="btn btn-success" onClick={signUpAlert}>
             Sign up
           </a>
         </div>
