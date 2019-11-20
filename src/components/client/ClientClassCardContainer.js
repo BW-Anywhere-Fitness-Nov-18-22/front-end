@@ -43,7 +43,7 @@ function ClientClassCardContainer() {
       </Nav>
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">
-          <ClientClassCard />
+          <ClientClassCard toggle={toggle}/>
         </TabPane>
         <TabPane tabId="2">
             <ClientClassEditCard/>
