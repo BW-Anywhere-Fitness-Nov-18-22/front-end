@@ -3,9 +3,9 @@ import { Button } from "reactstrap";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import withAuth from "../../axios";
 
 function InstructorsAddClass(props) {
-
   return (
     <Form>
       <div className="form-group">
@@ -113,7 +113,10 @@ const InstructorsAddClassWFormik = withFormik({
   }),
 
   handleSubmit(values, tools) {
-    const baseUrl = process.env.NODE_ENV === 'production' ? 'https://bw4-anywhere-fitness.herokuapp.com/' : 'http://localhost:4000';
+    const baseUrl =
+      process.env.NODE_ENV === "production"
+        ? "https://bw4-anywhere-fitness.herokuapp.com/"
+        : "http://localhost:4000";
     const payload = {
       type: values.classType,
       date: values.startTime,
@@ -123,9 +126,10 @@ const InstructorsAddClassWFormik = withFormik({
       location: values.location,
       registeredAttendees: 0,
       maxClassSize: values.maxClassSize,
-      instructorId: 3, // supposed to come from states or local storage, then send to database
-    }
-    axios.post(baseUrl + '/api/class', payload)
+      instructorId: 5 // supposed to come from states or local storage, then send to database
+    };
+    withAuth()
+      .post(baseUrl + "/api/class", payload)
       .then(res => {
         console.log(res.data);
         tools.resetForm();
@@ -134,7 +138,6 @@ const InstructorsAddClassWFormik = withFormik({
         console.log(err);
       });
   }
-  
 })(InstructorsAddClass);
 
 export default InstructorsAddClassWFormik;
