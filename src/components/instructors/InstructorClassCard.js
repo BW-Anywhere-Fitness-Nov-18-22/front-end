@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import withAuth from "../../axios";
 
 function InstructorClassCard() {
-  
-  function cancelAlert() { alert("FitnessClass/id Canceled"); }
   const [iClasses, setiClasses] = useState([]);
 
   const baseUrl =
@@ -13,27 +11,31 @@ function InstructorClassCard() {
 
   useEffect(() => {
     withAuth()
-      .get(baseUrl + "/api/class/instructor")
+      .get(baseUrl + "/api/instructor/class")
       .then(response => {
         setiClasses(response.data);
       })
       .catch(error => {});
   }, [iClasses]);
 
+  function deleteClass(classID) {
+    withAuth().delete(baseUrl + '/api/instructor/class/' + classID)
+  }
+
   return (
     <div>
       {iClasses.map(iClass => (
-        <div className="card mb-4">
+        <div className="card mb-4" key={iClass.id}>
           <div className="card-body">
             <div className="d-flex flex-row justify-content-between">
               <h5 className="card-title">Fitness Class</h5>
-              <p>{iClass.type}</p>
-              <p>{iClass.location}</p>
+              <p className="text-capitalize">{iClass.type}</p>
+              <p className="text-capitalize">{iClass.location}</p>
             </div>
             <p className="card-text">
               <span className="text-warning">{iClass.startTime}</span>
             </p>
-            <h6 className="card-subtitle mb-2 text-info">
+            <h6 className="card-subtitle mb-2 text-info text-capitalize">
               {iClass.intensityLevel}
             </h6>
             {/* <p className="card-text">
@@ -49,8 +51,8 @@ function InstructorClassCard() {
                 <a href="#" className="btn btn-primary mr-2">
                   Edit
                 </a>
-                <a href="#" className="btn btn-danger" onClick={cancelAlert}>
-                  Cancel
+                <a href="#" className="btn btn-danger" onClick={e => deleteClass(iClass.id)}>
+                  Delete
                 </a>
               </div>
             </div>

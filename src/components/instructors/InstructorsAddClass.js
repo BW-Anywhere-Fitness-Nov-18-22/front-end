@@ -6,7 +6,6 @@ import axios from "axios";
 import withAuth from "../../axios";
 
 function InstructorsAddClass(props) {
-  function addAlert() { alert("FitnessClass/id Added"); }
   return (
     <Form>
       <div className="form-group">
@@ -87,7 +86,7 @@ function InstructorsAddClass(props) {
         />
       </div>
 
-      <Button color="success" type="submit" onClick={addAlert}>
+      <Button color="success" type="submit">
         Submit
       </Button>
     </Form>
@@ -118,19 +117,20 @@ const InstructorsAddClassWFormik = withFormik({
       process.env.NODE_ENV === "production"
         ? "https://bw4-anywhere-fitness.herokuapp.com/"
         : "http://localhost:4000";
+
     const payload = {
       type: values.classType,
-      date: values.startTime,
-      startTime: values.startTime,
+      date: values.startTime.slice(0, 10),
+      startTime: values.startTime.slice(11, 16),
       duration: values.duration,
       intensityLevel: values.intensityLevel,
       location: values.location,
       registeredAttendees: 0,
-      maxClassSize: values.maxClassSize,
-      instructorId: 5 // supposed to come from states or local storage, then send to database
+      maxClassSize: values.maxClassSize
     };
+
     withAuth()
-      .post(baseUrl + "/api/class", payload)
+      .post(baseUrl + "/api/instructor/class", payload)
       .then(res => {
         console.log(res.data);
         tools.resetForm();
