@@ -1,9 +1,14 @@
 import React from "react";
 import { Button } from "reactstrap";
 import { withFormik, Form, Field } from "formik";
+import axios from "axios";
+
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://bw4-anywhere-fitness.herokuapp.com/"
+    : "http://localhost:4000";
 
 function Login(props) {
-    
   return (
     <div className="SignUp-Container">
       <Form>
@@ -32,7 +37,7 @@ function Login(props) {
                     <Field className="form-control" type="instructorCode" name="instructorCode" id="instructorCode" placeholder="(Instructors Only)" /> */}
         </div>
         <div className="text-right">
-          <Button>Submit</Button>
+          <Button type="submit">Submit</Button>
         </div>
       </Form>
     </div>
@@ -45,6 +50,27 @@ const LoginWFormik = withFormik({
       email: "",
       password: ""
     };
+  },
+
+  handleSubmit(values, tools) {
+    const payload = {
+      email: values.email,
+      password: values.password
+    };
+
+    axios
+      .post(baseUrl + "/api/auth/login", payload)
+      .then(response => {
+        localStorage.setItem("token", response.data.token);
+
+        const landingUrl =
+          response.data.user.role === "client"
+            ? "/dashboard/client"
+            : "/dashboard/instructor";
+
+        tools.props.history.push(landingUrl);
+      })
+      .catch(error => {});
   }
 })(Login);
 
