@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import withAuth from "../../axios";
 
-function ClientClassCard() {
-  function signUpAlert() { alert("FitnessClass/id Added"); }
+function ClientClassCard(props) {
   const [iClasses, setiClasses] = useState([]);
 
   const baseUrl =
@@ -13,28 +12,41 @@ function ClientClassCard() {
 
   useEffect(() => {
     withAuth()
-      .get(baseUrl + "/api/class")
+      .get(baseUrl + "/api/client/class")
       .then(response => {
         setiClasses(response.data);
       })
       .catch(error => {});
-  });
+  }, []);
+
+  function reserveClass(classID) {
+    const payload = {
+      classId: classID
+    }
+    withAuth().post(baseUrl + "/api/client/reservations", payload)
+    .then(response => {
+      
+    }).catch(error => {
+
+    })
+    props.toggle("2")
+  }
 
   return (
     <div>
       {iClasses.map(iClass => {
         return (
-          <div className="card mb-4">
+          <div className="card mb-4" key={iClass.id}>
             <div className="card-body">
               <div className="d-flex flex-row justify-content-between">
                 <h5 className="card-title">Fitness Class</h5>
-                <p>{iClass.type}</p>
-                <p>{iClass.location}</p>
+                <p className="text-capitalize">{iClass.type}</p>
+                <p className="text-capitalize">{iClass.location}</p>
               </div>
               <p className="card-text">
                 <span className="text-warning">{iClass.startTime}</span>
               </p>
-              <h6 className="card-subtitle mb-2 text-info">
+              <h6 className="card-subtitle mb-2 text-info text-capitalize">
                 {iClass.intensityLevel}
               </h6>
               {/* <p className="card-text">
@@ -46,7 +58,7 @@ function ClientClassCard() {
                 <p className="text-primary">
                   {iClass.registeredAttendees}/{iClass.maxClassSize}
                 </p>
-                <a href="#" className="btn btn-success" onClick={signUpAlert}>
+                <a href="#" className="btn btn-success" onClick={e => reserveClass(iClass.id)}>
                   Sign up
                 </a>
               </div>

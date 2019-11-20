@@ -21,7 +21,7 @@ function InstructorClassCardContainer() {
         <Modal fade={false} isOpen={modal} toggle={toggle}>
           <ModalHeader>Add a New Class</ModalHeader>
           <ModalBody>
-            <InstructorsAddClassWFormik />
+            <InstructorsAddClassWFormik toggle={toggle} />
           </ModalBody>
         </Modal>
       </div>
