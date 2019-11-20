@@ -6,6 +6,7 @@ import axios from "axios";
 import withAuth from "../../axios";
 
 function InstructorsAddClass(props) {
+
   return (
     <Form>
       <div className="form-group">
@@ -132,12 +133,10 @@ const InstructorsAddClassWFormik = withFormik({
     withAuth()
       .post(baseUrl + "/api/instructor/class", payload)
       .then(res => {
-        console.log(res.data);
         tools.resetForm();
+        tools.props.toggle();
       })
-      .catch(err => {
-        console.log(err);
-      });
+      .catch(err => {});
   }
 })(InstructorsAddClass);
 
