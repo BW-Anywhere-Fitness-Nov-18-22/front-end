@@ -56,7 +56,7 @@ export default function Navigation() {
                 <NavLink to="https://github.com/orgs/BW-Anywhere-Fitness-Nov-18-22/dashboard">GitHub</NavLink>
                 </DropdownItem>
                 <DropdownItem>
-                  Option 2
+                  About
                 </DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem>
