@@ -3,6 +3,7 @@ import axios from "axios";
 import withAuth from "../../axios";
 
 function ClientClassCard() {
+  function signUpAlert() { alert("FitnessClass/id Added"); }
   const [iClasses, setiClasses] = useState([]);
 
   const baseUrl =
@@ -30,7 +31,6 @@ function ClientClassCard() {
                 <p>{iClass.type}</p>
                 <p>{iClass.location}</p>
               </div>
-
               <p className="card-text">
                 <span className="text-warning">{iClass.startTime}</span>
               </p>
@@ -46,7 +46,7 @@ function ClientClassCard() {
                 <p className="text-primary">
                   {iClass.registeredAttendees}/{iClass.maxClassSize}
                 </p>
-                <a href="#" className="btn btn-success">
+                <a href="#" className="btn btn-success" onClick={signUpAlert}>
                   Sign up
                 </a>
               </div>

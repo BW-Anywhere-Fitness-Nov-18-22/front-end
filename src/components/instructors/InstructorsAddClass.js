@@ -6,6 +6,7 @@ import axios from "axios";
 import withAuth from "../../axios";
 
 function InstructorsAddClass(props) {
+  function addAlert() { alert("FitnessClass/id Added"); }
   return (
     <Form>
       <div className="form-group">
@@ -86,7 +87,7 @@ function InstructorsAddClass(props) {
         />
       </div>
 
-      <Button color="success" type="submit">
+      <Button color="success" type="submit" onClick={addAlert}>
         Submit
       </Button>
     </Form>

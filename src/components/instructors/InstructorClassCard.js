@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import withAuth from "../../axios";
 
 function InstructorClassCard() {
+  
+  function cancelAlert() { alert("FitnessClass/id Canceled"); }
   const [iClasses, setiClasses] = useState([]);
 
   const baseUrl =
@@ -28,7 +30,6 @@ function InstructorClassCard() {
               <p>{iClass.type}</p>
               <p>{iClass.location}</p>
             </div>
-
             <p className="card-text">
               <span className="text-warning">{iClass.startTime}</span>
             </p>
@@ -48,7 +49,7 @@ function InstructorClassCard() {
                 <a href="#" className="btn btn-primary mr-2">
                   Edit
                 </a>
-                <a href="#" className="btn btn-danger">
+                <a href="#" className="btn btn-danger" onClick={cancelAlert}>
                   Cancel
                 </a>
               </div>
