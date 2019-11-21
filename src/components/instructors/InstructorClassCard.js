@@ -22,13 +22,26 @@ function InstructorClassCard() {
       .then(response => {
         // debugger;
         setiClasses(response.data);
+        alert(response.data.message)
       })
-      .catch(error => {});
+      .catch(error => {alert(error)});
   }, [iClasses]);
 
   function deleteClass(classID) {
     withAuth().delete(baseUrl + "/api/instructor/class/" + classID);
   }
+
+function getCurrentClassdata(id) {
+  withAuth().get(baseUrl + "/api/instructor/class")
+  .then(response => {
+    const editClass = response.data.find(editClass => editClass.id == id);
+    console.log(editClass);
+    
+  }).catch(error => {
+    
+  })
+  toggle()
+}
 
   return (
     <div>
@@ -57,15 +70,15 @@ function InstructorClassCard() {
               </p>
               <div className="text-right">
                 {/* // Edit class modal>>> */}
-                <Container>
-                  <a href="#" className="btn btn-primary mr-2" onClick={toggle}>
+              
+                  <a href="#" className="btn btn-primary mr-2" onClick={() => getCurrentClassdata(iClass.id)}>
                     Edit
                   </a>
                   <Modal fade={false} isOpen={modal} toggle={toggle}>
-                    <ModalHeader>Edit An Existing Class:</ModalHeader>
-                    <ModalBody>
-                      <InstructorsEditClassWFormik toggle={toggle} />
-                    </ModalBody>
+                    <ModalHeader>Edit Class</ModalHeader>
+                      <ModalBody>
+                        <InstructorsEditClassWFormik toggle={toggle} />
+                      </ModalBody>
                   </Modal>
                   <a
                     href="#"
@@ -74,7 +87,7 @@ function InstructorClassCard() {
                   >
                     Delete
                   </a>
-                </Container>
+  
               </div>
             </div>
           </div>

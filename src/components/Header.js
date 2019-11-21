@@ -17,10 +17,15 @@ import SignUp from "./SignUp";
 // import Classes from './ClassCardContainer';
 import Login from "./Login";
 
-export default () => {
+export default function Navigation(props) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    props.history.push("/");
+  };
 
   return (
     <div>
@@ -58,13 +63,14 @@ export default () => {
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>
-                  <NavLink to="https://github.com/orgs/BW-Anywhere-Fitness-Nov-18-22/dashboard">
+                  <a href="https://github.com/orgs/BW-Anywhere-Fitness-Nov-18-22/dashboard">
                     GitHub
-                  </NavLink>
+                  </a>
                 </DropdownItem>
-                <DropdownItem>About</DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem>Reset</DropdownItem>
+                <DropdownItem>
+                  <a onClick={e => logout()}>Logout</a>
+                </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
@@ -72,4 +78,4 @@ export default () => {
       </Navbar>
     </div>
   );
-};
+}

@@ -13,22 +13,10 @@ import InstructorOverview from "./components/instructors/InstructorOverview";
 function App() {
   return (
     <div>
-      <Navigation />
-      <AFLogoFxn />
-      <p className="slogan"> FIND FITNESS &ensp; |<span>&emsp; ANYWHERE &ensp;</span> </p>
-
       <Route
-        exact
         path="/"
         render={props => {
-          return <SignUpWFormik {...props} />;
-        }}
-      />
-
-      <Route
-        path="/classes"
-        render={props => {
-          return <LoginWFormik {...props} />;
+          return <Navigation {...props} />;
         }}
       />
 

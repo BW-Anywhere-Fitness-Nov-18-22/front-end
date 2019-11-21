@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import withAuth from "../../axios";
 
 function ClientClassCard(props) {
@@ -16,20 +15,24 @@ function ClientClassCard(props) {
       .then(response => {
         setiClasses(response.data);
       })
-      .catch(error => {});
+      .catch(error => {
+        alert(error);
+      });
   }, []);
 
   function reserveClass(classID) {
     const payload = {
       classId: classID
-    }
-    withAuth().post(baseUrl + "/api/client/reservations", payload)
-    .then(response => {
-      
-    }).catch(error => {
-
-    })
-    props.toggle("2")
+    };
+    withAuth()
+      .post(baseUrl + "/api/client/reservations", payload)
+      .then(response => {
+        alert(response.data.message);
+      })
+      .catch(error => {
+        alert(error);
+      });
+    props.toggle("2");
   }
 
   return (
@@ -58,7 +61,11 @@ function ClientClassCard(props) {
                 <p className="text-primary">
                   {iClass.registeredAttendees}/{iClass.maxClassSize}
                 </p>
-                <a href="#" className="btn btn-success" onClick={e => reserveClass(iClass.id)}>
+                <a
+                  href="#"
+                  className="btn btn-success"
+                  onClick={e => reserveClass(iClass.id)}
+                >
                   Sign up
                 </a>
               </div>
