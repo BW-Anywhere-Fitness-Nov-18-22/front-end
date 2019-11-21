@@ -9,7 +9,7 @@ export default function SearchForm() {
 
   const baseUrl =
     process.env.NODE_ENV === "production"
-      ? "https://bw4-anywhere-fitness.herokuapp.com/"
+      ? "https://bw4-anywhere-fitness.herokuapp.com"
       : "http://localhost:4000";
 
   useEffect(() => {
