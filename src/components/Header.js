@@ -67,7 +67,6 @@ export default function Navigation(props) {
                     GitHub
                   </a>
                 </DropdownItem>
-                <DropdownItem>About</DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem>
                   <a onClick={e => logout()}>Logout</a>
