@@ -15,7 +15,7 @@ function App() {
     <div>
       <Navigation />
       <AFLogoFxn />
-      <p className="slogan"> FIND FITNESS &ensp; |<span>&emsp; ANYWHERE &ensp;</span> &ensp; NEAR YOU ! </p>
+      <p className="slogan"> FIND FITNESS &ensp; |<span>&emsp; ANYWHERE &ensp;</span> </p>
 
       <Route
         exact

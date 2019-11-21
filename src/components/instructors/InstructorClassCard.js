@@ -62,7 +62,7 @@ function InstructorClassCard() {
                     Edit
                   </a>
                   <Modal fade={false} isOpen={modal} toggle={toggle}>
-                    <ModalHeader>Edit an existing class</ModalHeader>
+                    <ModalHeader>Edit An Existing Class:</ModalHeader>
                     <ModalBody>
                       <InstructorsEditClassWFormik toggle={toggle} />
                     </ModalBody>
