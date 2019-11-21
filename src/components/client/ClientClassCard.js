@@ -30,11 +30,11 @@ function ClientClassCard(props) {
         alert(response.data.message);
       })
       .catch(error => {
-        alert(error);
+        alert("You are unable to signup for this class " + error);
       });
     props.toggle("2");
   }
-
+ 
   return (
     <div>
       {iClasses.map(iClass => {

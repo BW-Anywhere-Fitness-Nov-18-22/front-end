@@ -17,16 +17,12 @@ function ClientClassEditCard() {
   useEffect(() => {
     withAuth()
       .get(baseUrl + "/api/client/reservations")
-      .then(response => response.json)
-      .then(json => {
-        if (json) {
-          setRegClasses(json);
-        } else {
-          throw new Error(`Bad Response: ${json}`);
-        }
+      // .then(response => response.json)
+      .then(response => {
+        setRegClasses(response.data)
       })
       .catch(error => console.log(error));
-  }, [baseUrl, regClasses]);
+  }, [regClasses]);
 
   function delReservation(classId) {
     withAuth()
@@ -45,14 +41,14 @@ function ClientClassEditCard() {
             <div className="card-body">
               <div className="d-flex flex-row justify-content-between">
                 <h5 className="card-title">Fitness Class Name</h5>
-                <p>{regClass.type}</p>
-                <p>{regClass.location}</p>
+                <p className="text-capitalize">{regClass.type}</p>
+                <p className="text-capitalize">{regClass.location}</p>
               </div>
 
               <p className="card-text">
                 <span className="text-warning">{regClass.startTime}</span>
               </p>
-              <h6 className="card-subtitle mb-2 text-info">
+              <h6 className="card-subtitle mb-2 text-info text-capitalize">
                 {regClass.intensityLevel}
               </h6>
               {/* <p className="card-text">
@@ -61,7 +57,7 @@ function ClientClassEditCard() {
                 on the card title and make up the bulk of the card's content
               </p> */}
               <div className="d-flex flex-row justify-content-between">
-                <p className="text-primary">
+                <p className="text-primary text-capitalize">
                   {regClass.registeredAttendees}/{regClass.maxClassSize}
                 </p>
                 <div className="text-right">
