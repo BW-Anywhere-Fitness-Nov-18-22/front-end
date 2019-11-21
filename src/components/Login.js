@@ -62,15 +62,16 @@ const LoginWFormik = withFormik({
       .post(baseUrl + "/api/auth/login", payload)
       .then(response => {
         localStorage.setItem("token", response.data.token);
-
         const landingUrl =
           response.data.user.role === "client"
             ? "/dashboard/client"
             : "/dashboard/instructor";
-
         tools.props.history.push(landingUrl);
+        alert(response.data.message)
       })
-      .catch(error => {});
+      .catch(error => {
+        alert(error);
+      });
   }
 })(Login);
 

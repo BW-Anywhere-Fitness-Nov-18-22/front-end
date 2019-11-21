@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "reactstrap";
+import { Button, Toast, ToastBody, ToastHeader } from "reactstrap";
 import { withFormik, Form, Field } from "formik";
 import axios from "axios";
 
@@ -9,7 +9,6 @@ const baseUrl =
     : "http://localhost:4000";
 
 function SignUp(props) {
-    
   return (
     <div className="SignUp-Container">
       <Form>
@@ -83,7 +82,6 @@ const SignUpWFormik = withFormik({
   },
 
   handleSubmit(values, tools) {
-
     const payload = {
       firstName: values.firstname,
       lastName: values.lastname,
@@ -100,8 +98,9 @@ const SignUpWFormik = withFormik({
       .then(response => {
         localStorage.setItem("token", response.data.token);
         tools.props.history.push(landingUrl);
+        alert(response.data.message);
       })
-      .catch(error => {});
+      .catch(error => {alert(error)});
   }
 })(SignUp);
 

@@ -18,16 +18,18 @@ function ClientClassEditCard() {
     withAuth()
       .get(baseUrl + "/api/client/reservations")
       .then(response => {
-        console.log(response);
-        
         setRegClasses(response.data);
       })
-      .catch(error => {});
+      .catch(error => {alert(error)});
   }, [regClasses]);
 
-
   function delReservation(classId) {
-    withAuth().delete(baseUrl + '/api/client/reservations/' + classId)
+    withAuth()
+      .delete(baseUrl + "/api/client/reservations/" + classId)
+      .then(response => {
+        alert(response.data.message)
+      })
+      .catch(error => {alert(error)});
   }
 
   return (
@@ -58,11 +60,12 @@ function ClientClassEditCard() {
                   {regClass.registeredAttendees}/{regClass.maxClassSize}
                 </p>
                 <div className="text-right">
-                  <a href="#" className="btn btn-primary mr-2">
-                    ReSchedule
-                  </a>
-                  <a href="#" className="btn btn-danger" onClick={e => delReservation(regClass.classId)}>
-                    Cancel
+                  <a
+                    href="#"
+                    className="btn btn-danger"
+                    onClick={e => delReservation(regClass.classId)}
+                  >
+                    Cancel Reservation
                   </a>
                 </div>
               </div>
