@@ -17,17 +17,19 @@ function ClientClassEditCard() {
   useEffect(() => {
     withAuth()
       .get(baseUrl + "/api/client/reservations")
-      .then(response => {
-        console.log(response);
-        
-        setRegClasses(response.data);
+      .then(response => response.json)
+      .then(json => {
+        if (json) {
+          setRegClasses(json);
+        } else {
+          throw new Error(`Bad Response: ${json}`);
+        }
       })
-      .catch(error => {});
-  }, [regClasses]);
-
+      .catch(error => console.log(error));
+  }, [baseUrl, regClasses]);
 
   function delReservation(classId) {
-    withAuth().delete(baseUrl + '/api/client/reservations/' + classId)
+    withAuth().delete(baseUrl + "/api/client/reservations/" + classId);
   }
 
   return (
@@ -61,7 +63,11 @@ function ClientClassEditCard() {
                   <a href="#" className="btn btn-primary mr-2">
                     ReSchedule
                   </a>
-                  <a href="#" className="btn btn-danger" onClick={e => delReservation(regClass.classId)}>
+                  <a
+                    href="#"
+                    className="btn btn-danger"
+                    onClick={e => delReservation(regClass.classId)}
+                  >
                     Cancel
                   </a>
                 </div>
