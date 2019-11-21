@@ -60,7 +60,7 @@ function InstructorsEditClass(props) {
         >
           <option>30 Minutes</option>
           <option>45 Minutes</option>
-          <option>1 Hour</option>
+          <option>60 Minutes</option>
         </Field>
       </div>
 
@@ -134,9 +134,9 @@ const InstructorsEditClassWFormik = withFormik({
       .then(res => {
         tools.resetForm();
         tools.props.toggle();
-        alert("EditClass" + res.data.message)
+        alert(res.data.message)
       })
-      .catch(err => {alert("EditClassERR" + err)});
+      .catch(err => {alert(err)});
   }
 })(InstructorsEditClass);
 
