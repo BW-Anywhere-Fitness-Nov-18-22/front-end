@@ -11,7 +11,6 @@ import classnames from "classnames";
 import ClientClassCard from "./ClientClassCard";
 import ClientClassEditCard from "./ClientClassEditCard";
 
-import SearchForm from "../SearchForm";
 
 function ClientClassCardContainer() {
   const [activeTab, setActiveTab] = useState("1");
