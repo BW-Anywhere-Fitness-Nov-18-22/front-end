@@ -16,7 +16,7 @@ function ClientClassEditCard() {
       .get(baseUrl + "/api/client/reservations")
       // .then(response => response.json)
       .then(response => {
-        setRegClasses(response.data)
+        setRegClasses(response.data);
       })
       .catch(error => console.log(error));
   }, [regClasses.length]);
@@ -25,34 +25,50 @@ function ClientClassEditCard() {
     withAuth()
       .delete(baseUrl + "/api/client/reservations/" + classId)
       .then(response => {
-        alert(response.data.message)
+        alert(response.data.message);
       })
-      .catch(error => {alert(error)});
+      .catch(error => {
+        alert(error);
+      });
   }
 
   return (
     <div className="d-flex flex-row justify-content-between">
       {regClasses.map(regClass => {
         return (
-          <div className="card mb-2 mr-2 w-50" key={regClass.classId}>
+          <div className="card mb-2 mr-2" key={regClass.classId}>
             <div className="card-body">
               <div className="d-flex flex-row justify-content-between">
-                <h5 className="card-title">Fitness Class Name</h5>
+                <h5 className="card-title">Fitness Class</h5>
                 <p className="text-capitalize">{regClass.type}</p>
-                <p className="text-capitalize">{regClass.location}</p>
+                <p className="text-capitalize">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>{" "}
+                  {regClass.location}
+                </p>
               </div>
 
               <p className="card-text">
-                <span className="text-warning">{regClass.startTime}</span>
+                <i class="fa fa-calendar" aria-hidden="true"></i>{" "}
+                {regClass.date.slice(0, 10)}
+                {"  "}
+                <i class="fa fa-clock-o" aria-hidden="true"></i>{" "}
+                {regClass.startTime.slice(0, 5)}
               </p>
-              <h6 className="card-subtitle mb-2 text-info text-capitalize">
-                {regClass.intensityLevel}
-              </h6>
-              {/* <p className="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content. Some quick example text to build
-                on the card title and make up the bulk of the card's content
-              </p> */}
+
+              <div className="d-flex flex-row justify-content-between">
+                <h6 className="card-subtitle mb-2 text-info text-capitalize">
+                  {regClass.intensityLevel}
+                </h6>
+                <p>
+                  <i class="fa fa-hourglass-start" aria-hidden="true"></i>{" "}
+                  {regClass.duration} Minutes
+                </p>
+                <p>
+                  <i class="fa fa-user" aria-hidden="true"></i>{" "}
+                  {regClass.instructorName}
+                </p>
+              </div>
+              <p className="card-text">{regClass.description}</p>
               <div className="d-flex flex-row justify-content-between">
                 <p className="text-primary text-capitalize">
                   {regClass.registeredAttendees}/{regClass.maxClassSize}
