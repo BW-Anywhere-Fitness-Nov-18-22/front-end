@@ -24,7 +24,6 @@ export default function Navigation(props) {
 
   const logout = () => {
     localStorage.removeItem("token");
-    console.log(props);
     props.history.push("/");
   };
 
