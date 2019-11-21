@@ -19,7 +19,7 @@ function ClientClassEditCard() {
         setRegClasses(response.data)
       })
       .catch(error => console.log(error));
-  }, [regClasses]);
+  }, [regClasses.length]);
 
   function delReservation(classId) {
     withAuth()
