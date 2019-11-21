@@ -61,17 +61,14 @@ function InstructorsAddClass(props) {
         />
       </div>
       <div className="form-group">
-        <label htmlFor="duration">Duration</label>
+        <label htmlFor="duration">Duration (in minutes)</label>
         <Field
-          as="select"
+          type="number"
           className="form-control"
           name="duration"
           id="duration"
-        >
-          <option>30 Minutes</option>
-          <option>45 Minutes</option>
-          <option>60 Minutes</option>
-        </Field>
+          min="1"
+        ></Field>
       </div>
 
       <div className="form-group">
@@ -111,7 +108,7 @@ const InstructorsAddClassWFormik = withFormik({
       classType: "Yoga",
       intensityLevel: "Beginner",
       startTime: "",
-      duration: "30 Minutes",
+      duration: 1,
       maxClassSize: "",
       location: "",
       description: ""
