@@ -11,6 +11,7 @@
     "react-payment": "^0.1.8",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
+    "react-stripe-checkout": "^2.6.3",
     "reactstrap": "^8.1.1",
     "yup": "^0.27.0"
   },
