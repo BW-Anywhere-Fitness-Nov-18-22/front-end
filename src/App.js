@@ -28,22 +28,6 @@ function App() {
         }}
       />
 
-      <Route
-        exact
-        path="/overview/client"
-        render={props => {
-          return <ClientOverview {...props} />;
-        }}
-      />
-
-      <Route
-        exact
-        path="/overview/instructor"
-        render={props => {
-          return <InstructorOverview {...props} />;
-        }}
-      />
-
       <PrivateRoute
         component={ClientDashboard}
         exact
@@ -54,6 +38,18 @@ function App() {
         component={InstructorDashboard}
         exact
         path="/dashboard/instructor"
+      />
+
+      <PrivateRoute
+        component={ClientOverview}
+        exact
+        path="/overview/client"
+      />
+
+      <PrivateRoute
+        component={InstructorOverview}
+        exact
+        path="/overview/instructor"
       />
     </div>
   );

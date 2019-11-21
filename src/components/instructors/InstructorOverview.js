@@ -1,23 +1,22 @@
 import React from "react";
-import Overview from "../Overview";
-import { Button } from "reactstrap";
-import { NavLink } from "react-router-dom";
+import { Button, Jumbotron } from "reactstrap";
+import { Link } from "react-router-dom";
 // import { View } from 'react-native';
 
 export default props => {
   return (
-    <>
-      <h1>Hello Instructor!</h1>
-      <Overview />
-      <div className="text-right">
-      {/* <View style={{margin:10}}> */}
-        <Button>
-          <NavLink to="/dashboard/instructor" className="nav-link">
-            Dashboard
-          </NavLink>
-        </Button>
-       {/* </View> */}
-      </div>
-    </>
+    <Jumbotron className="mt-5">
+      <h3>Welcome to Anywhere Fitness</h3>
+
+      <h5>As an Instructor, you can..</h5>
+      <ul>
+        <li>Create a class by clicking on the add class button</li>
+        <li>Delete your created classes by clicking the delete button</li>
+      </ul>
+
+      <Link to="/dashboard/instructor">
+        <Button color="danger" size="lg">Close</Button>
+      </Link>
+    </Jumbotron>
   );
 };
