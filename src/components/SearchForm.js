@@ -20,7 +20,8 @@ export default function SearchForm() {
         console.log(res.data);
         const iclasses = res.data;
         const results = iclasses.filter(iclass => {
-          return iclass.name.toLowerCase().includes(currentForm.toLowerCase());
+          return iclass.type.toLowerCase().includes(currentForm.toLowerCase());
+
         })
         submitResult(results);
       })
