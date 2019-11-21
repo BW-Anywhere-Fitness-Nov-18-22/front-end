@@ -11,10 +11,7 @@ function InstructorClassCard() {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
 
-  const baseUrl =
-    process.env.NODE_ENV === "production"
-      ? "https://bw4-anywhere-fitness.herokuapp.com"
-      : "http://localhost:4000";
+  const baseUrl = "https://bw4-anywhere-fitness.herokuapp.com";
 
   useEffect(() => {
     withAuth()

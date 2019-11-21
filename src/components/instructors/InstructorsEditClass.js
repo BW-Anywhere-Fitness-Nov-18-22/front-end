@@ -113,11 +113,8 @@ const InstructorsEditClassWFormik = withFormik({
     intensityLevel: Yup.string().required("Select a intensity level")
   }),
   handleSubmit(values, tools) {
-    const baseUrl =
-      process.env.NODE_ENV === "production"
-        ? "https://bw4-anywhere-fitness.herokuapp.com"
-        : "http://localhost:4000";
-
+    const baseUrl = "https://bw4-anywhere-fitness.herokuapp.com";
+    
     const payload = {
       type: values.classType,
       date: values.startTime.slice(0, 10),

@@ -113,10 +113,7 @@ function ClientClassCard(props) {
     console.log(searchby);
   };
 
-  const baseUrl =
-    process.env.NODE_ENV === "production"
-      ? "https://bw4-anywhere-fitness.herokuapp.com"
-      : "http://localhost:4000";
+  const baseUrl = "https://bw4-anywhere-fitness.herokuapp.com"
 
   useEffect(() => {
     withAuth()
@@ -179,10 +176,19 @@ function ClientClassCard(props) {
                 <div className="d-flex flex-row justify-content-between">
                   <h5 className="card-title">Fitness Class</h5>
                   <p className="text-capitalize">{iClass.type}</p>
-                  <p className="text-capitalize">{iClass.location}</p>
+                  <p className="text-capitalize">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>{" "}
+                    {iClass.location}
+                  </p>
                 </div>
                 <p className="card-text">
-                  <span className="text-warning">{iClass.startTime}</span>
+                  <span className="text-warning">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>{" "}
+                    {iClass.date}
+                    {"  "}
+                    <i class="fa fa-clock-o" aria-hidden="true"></i>{" "}
+                    {iClass.startTime}
+                  </span>
                 </p>
                 <h6 className="card-subtitle mb-2 text-info text-capitalize">
                   {iClass.intensityLevel}
