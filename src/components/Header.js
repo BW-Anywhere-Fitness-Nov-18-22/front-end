@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Route, NavLink } from 'react-router-dom';
+import React, { useState } from "react";
+import { Route, NavLink } from "react-router-dom";
 import {
   Collapse,
   Navbar,
@@ -9,20 +9,24 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  DropdownItem
+} from "reactstrap";
 
 // import Dashboard from './Dashboard';
-import SignUp from './SignUp';
+import SignUp from "./SignUp";
 // import Classes from './ClassCardContainer';
-import Login from './Login';
+import Login from "./Login";
 
-
-
-
-export default function Navigation() {
+export default function Navigation(props) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    console.log(props);
+    props.history.push("/");
+  };
 
   return (
     <div>
@@ -31,20 +35,27 @@ export default function Navigation() {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
-         
             <li className="nav-item">
-                <NavLink exact to='/' className="nav-link">Home</NavLink>
-                {/* <Route exact path='/' component={Dashboard} /> */}
+              <NavLink exact to="/" className="nav-link">
+                Home
+              </NavLink>
+              {/* <Route exact path='/' component={Dashboard} /> */}
             </li>
             <li className="nav-item">
-                <NavLink to='/classes' className="nav-link">Classes</NavLink>
-                {/* <Route exact path='/classes' component={ClassCardContainer} /> */}
+              <NavLink to="/classes" className="nav-link">
+                Classes
+              </NavLink>
+              {/* <Route exact path='/classes' component={ClassCardContainer} /> */}
             </li>
             <li className="nav-item">
-                <NavLink to='/register' className="nav-link">Sign-Up</NavLink>
+              <NavLink to="/register" className="nav-link">
+                Sign-Up
+              </NavLink>
             </li>
             <li className="nav-item">
-                <NavLink to='/login' className="nav-link">Login</NavLink>
+              <NavLink to="/login" className="nav-link">
+                Login
+              </NavLink>
             </li>
 
             <UncontrolledDropdown nav inNavbar>
@@ -53,14 +64,14 @@ export default function Navigation() {
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>
-                <NavLink to="https://github.com/orgs/BW-Anywhere-Fitness-Nov-18-22/dashboard">GitHub</NavLink>
+                  <a href="https://github.com/orgs/BW-Anywhere-Fitness-Nov-18-22/dashboard">
+                    GitHub
+                  </a>
                 </DropdownItem>
-                <DropdownItem>
-                  About
-                </DropdownItem>
+                <DropdownItem>About</DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem>
-                  Reset
+                  <a onClick={e => logout()}>Logout</a>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
@@ -70,6 +81,3 @@ export default function Navigation() {
     </div>
   );
 }
-
-
-

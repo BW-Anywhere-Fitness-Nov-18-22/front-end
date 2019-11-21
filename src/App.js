@@ -10,7 +10,12 @@ import InstructorDashboard from "./components/dashboard/Instructor";
 function App() {
   return (
     <div>
-      <Navigation />
+      <Route
+        path="/"
+        render={props => {
+          return <Navigation {...props} />;
+        }}
+      />
 
       <Route
         path="/login"
