@@ -112,7 +112,6 @@ const InstructorsEditClassWFormik = withFormik({
     classType: Yup.string().required("Select a class type"),
     intensityLevel: Yup.string().required("Select a intensity level")
   }),
-
   handleSubmit(values, tools) {
     const baseUrl =
       process.env.NODE_ENV === "production"

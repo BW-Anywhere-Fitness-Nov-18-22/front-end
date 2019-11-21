@@ -5,13 +5,11 @@ import withAuth from "../../axios";
 import { Container, Modal, ModalBody, ModalHeader } from "reactstrap";
 import InstructorsEditClassWFormik from "./InstructorsEditClass";
 
-
 function InstructorClassCard() {
   const [iClasses, setiClasses] = useState([]);
   //Added for modal edit>>>
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
-
 
   const baseUrl =
     process.env.NODE_ENV === "production"
@@ -22,13 +20,14 @@ function InstructorClassCard() {
     withAuth()
       .get(baseUrl + "/api/instructor/class")
       .then(response => {
+        // debugger;
         setiClasses(response.data);
       })
       .catch(error => {});
   }, [iClasses]);
 
   function deleteClass(classID) {
-    withAuth().delete(baseUrl + '/api/instructor/class/' + classID)
+    withAuth().delete(baseUrl + "/api/instructor/class/" + classID);
   }
 
   return (
@@ -57,20 +56,23 @@ function InstructorClassCard() {
                 {iClass.registeredAttendees}/{iClass.maxClassSize}
               </p>
               <div className="text-right">
-
                 {/* // Edit class modal>>> */}
                 <Container>
                   <a href="#" className="btn btn-primary mr-2" onClick={toggle}>
                     Edit
                   </a>
                   <Modal fade={false} isOpen={modal} toggle={toggle}>
-                    <ModalHeader>Edit an existing class</ModalHeader>
-                      <ModalBody>
-                        <InstructorsEditClassWFormik toggle={toggle} />
-                      </ModalBody>
+                    <ModalHeader>Edit An Existing Class:</ModalHeader>
+                    <ModalBody>
+                      <InstructorsEditClassWFormik toggle={toggle} />
+                    </ModalBody>
                   </Modal>
-                  <a href="#" className="btn btn-danger" onClick={e => deleteClass(iClass.id)}>
-                  Delete
+                  <a
+                    href="#"
+                    className="btn btn-danger"
+                    onClick={e => deleteClass(iClass.id)}
+                  >
+                    Delete
                   </a>
                 </Container>
               </div>
@@ -83,9 +85,3 @@ function InstructorClassCard() {
 }
 
 export default InstructorClassCard;
-
-
-
-
-
-

@@ -10,6 +10,7 @@ const baseUrl =
 
 function Login(props) {
   return (
+    <div className="d-flex flex-row justify-content-center align-items-center">
     <div className="SignUp-Container">
       <Form>
         <div className="form-group">
@@ -37,9 +38,10 @@ function Login(props) {
                     <Field className="form-control" type="instructorCode" name="instructorCode" id="instructorCode" placeholder="(Instructors Only)" /> */}
         </div>
         <div className="text-right">
-          <Button type="submit">Submit</Button>
+          <Button type="submit" class="dark">Submit</Button>
         </div>
       </Form>
+    </div>
     </div>
   );
 }
