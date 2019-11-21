@@ -5,13 +5,11 @@ import withAuth from "../../axios";
 import { Container, Modal, ModalBody, ModalHeader } from "reactstrap";
 import InstructorsEditClassWFormik from "./InstructorsEditClass";
 
-
 function InstructorClassCard() {
   const [iClasses, setiClasses] = useState([]);
   //Added for modal edit>>>
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
-
 
   const baseUrl =
     process.env.NODE_ENV === "production"
@@ -22,6 +20,7 @@ function InstructorClassCard() {
     withAuth()
       .get(baseUrl + "/api/instructor/class")
       .then(response => {
+        // debugger;
         setiClasses(response.data);
         alert(response.data.message)
       })
@@ -29,7 +28,7 @@ function InstructorClassCard() {
   }, [iClasses]);
 
   function deleteClass(classID) {
-    withAuth().delete(baseUrl + '/api/instructor/class/' + classID)
+    withAuth().delete(baseUrl + "/api/instructor/class/" + classID);
   }
 
 function getCurrentClassdata(id) {
@@ -70,7 +69,6 @@ function getCurrentClassdata(id) {
                 {iClass.registeredAttendees}/{iClass.maxClassSize}
               </p>
               <div className="text-right">
-
                 {/* // Edit class modal>>> */}
               
                   <a href="#" className="btn btn-primary mr-2" onClick={() => getCurrentClassdata(iClass.id)}>
@@ -82,8 +80,12 @@ function getCurrentClassdata(id) {
                         <InstructorsEditClassWFormik toggle={toggle} />
                       </ModalBody>
                   </Modal>
-                  <a href="#" className="btn btn-danger" onClick={e => deleteClass(iClass.id)}>
-                  Delete
+                  <a
+                    href="#"
+                    className="btn btn-danger"
+                    onClick={e => deleteClass(iClass.id)}
+                  >
+                    Delete
                   </a>
   
               </div>
@@ -96,9 +98,3 @@ function getCurrentClassdata(id) {
 }
 
 export default InstructorClassCard;
-
-
-
-
-
-

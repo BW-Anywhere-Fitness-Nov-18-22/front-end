@@ -6,6 +6,9 @@ import LoginWFormik from "./components/Login";
 import SignUpWFormik from "./components/SignUp";
 import ClientDashboard from "./components/dashboard/Client";
 import InstructorDashboard from "./components/dashboard/Instructor";
+import AFLogoFxn from "./components/AFLogo";
+import ClientOverview from "./components/client/ClientOverview";
+import InstructorOverview from "./components/instructors/InstructorOverview";
 
 function App() {
   return (
@@ -28,6 +31,20 @@ function App() {
         path="/register"
         render={props => {
           return <SignUpWFormik {...props} />;
+        }}
+      />
+
+      <Route
+        path="/overview/client"
+        render={props => {
+          return <ClientOverview {...props} />;
+        }}
+      />
+
+      <Route
+        path="/overview/instructor"
+        render={props => {
+          return <InstructorOverview {...props} />;
         }}
       />
 

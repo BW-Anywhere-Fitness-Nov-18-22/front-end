@@ -17,11 +17,16 @@ function ClientClassEditCard() {
   useEffect(() => {
     withAuth()
       .get(baseUrl + "/api/client/reservations")
-      .then(response => {
-        setRegClasses(response.data);
+      .then(response => response.json)
+      .then(json => {
+        if (json) {
+          setRegClasses(json);
+        } else {
+          throw new Error(`Bad Response: ${json}`);
+        }
       })
-      .catch(error => {alert(error)});
-  }, [regClasses]);
+      .catch(error => console.log(error));
+  }, [baseUrl, regClasses]);
 
   function delReservation(classId) {
     withAuth()

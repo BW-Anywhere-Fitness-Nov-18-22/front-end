@@ -10,6 +10,7 @@ const baseUrl =
 
 function SignUp(props) {
   return (
+    <div className="d-flex flex-row justify-content-center align-items-center">
     <div className="SignUp-Container">
       <Form>
         <div className="form-group">
@@ -63,9 +64,10 @@ function SignUp(props) {
           />
         </div>
         <div className="text-right">
-          <Button type="submit">Submit</Button>
+          <Button type="submit" className="btn" variant="dark">Submit</Button>
         </div>
       </Form>
+    </div>
     </div>
   );
 }
@@ -91,7 +93,7 @@ const SignUpWFormik = withFormik({
     };
 
     const landingUrl =
-      payload.role === "client" ? "/dashboard/client" : "dashboard/instructor";
+      payload.role === "client" ? "/overview/client" : "overview/instructor";
 
     axios
       .post(baseUrl + "/api/auth/register", payload)

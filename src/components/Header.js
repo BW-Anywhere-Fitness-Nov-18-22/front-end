@@ -30,7 +30,7 @@ export default function Navigation(props) {
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">ANYWHERE FITNESS</NavbarBrand>
+        <NavbarBrand href="/">| &ensp;A N Y W H E R E &ensp;  F I T N E S S </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
