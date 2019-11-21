@@ -93,7 +93,7 @@ const SignUpWFormik = withFormik({
     };
 
     const landingUrl =
-      payload.role === "client" ? "/dashboard/client" : "dashboard/instructor";
+      payload.role === "client" ? "/overview/client" : "overview/instructor";
 
     axios
       .post(baseUrl + "/api/auth/register", payload)

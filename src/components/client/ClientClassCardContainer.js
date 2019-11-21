@@ -46,7 +46,7 @@ function ClientClassCardContainer() {
           <ClientClassCard toggle={toggle}/>
         </TabPane>
         <TabPane tabId="2">
-            <ClientClassEditCard/>
+          <ClientClassEditCard/>
         </TabPane>
       </TabContent>
     </Container>
