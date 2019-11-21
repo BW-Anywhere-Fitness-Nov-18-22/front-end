@@ -47,7 +47,7 @@ function ClientClassCardContainer() {
       </Nav>
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">
-        <SearchForm />
+        {/* <SearchForm /> */}
           <ClientClassCard toggle={toggle}/>
         </TabPane>
         <TabPane tabId="2">

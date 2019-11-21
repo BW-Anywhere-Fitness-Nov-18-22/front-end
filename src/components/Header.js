@@ -19,18 +19,20 @@ import Login from "./Login";
 
 export default function Navigation(props) {
   const [isOpen, setIsOpen] = useState(false);
+  const { myClasses, login, signUp, classes, search } = props;
 
   const toggle = () => setIsOpen(!isOpen);
 
-  const logout = () => {
+  const logout = (event) => {
     localStorage.removeItem("token");
-    props.history.push("/");
   };
 
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">| &ensp;A N Y W H E R E &ensp;  F I T N E S S </NavbarBrand>
+        <NavbarBrand href="/">
+          | &ensp;A N Y W H E R E &ensp; F I T N E S S{" "}
+        </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
@@ -38,26 +40,55 @@ export default function Navigation(props) {
               <NavLink exact to="/" className="nav-link">
                 Home
               </NavLink>
-              {/* <Route exact path='/' component={Dashboard} /> */}
             </li>
+
+            {myClasses ? (
+              <li className="nav-item">
+                <NavLink to="/classes" className="nav-link">
+                  My Classes
+                </NavLink>
+              </li>
+            ) : null}
+
+            {signUp ? (
+              <li className="nav-item">
+                <NavLink to="/register" className="nav-link">
+                  Sign-Up
+                </NavLink>
+              </li>
+            ) : null}
+
+            {login ? (
+              <li className="nav-item">
+                <NavLink to="/" className="nav-link">
+                  Login
+                </NavLink>
+              </li>
+            ) : null}
+
+            {classes ? (
+              <li className="nav-item">
+                <NavLink to="/dashboard/client" className="nav-link">
+                  Classes
+                </NavLink>
+              </li>
+            ) : null}
+
+            {search ? (
+              <li className="nav-item">
+                <NavLink to="/classes/search" className="nav-link">
+                  Classes
+                </NavLink>
+              </li>
+            ) : null}
+
             <li className="nav-item">
-              <NavLink to="/classes" className="nav-link">
-                Classes
-              </NavLink>
-              {/* <Route exact path='/classes' component={ClassCardContainer} /> */}
-            </li>
-            <li className="nav-item">
-              <NavLink to="/register" className="nav-link">
-                Sign-Up
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink to="/login" className="nav-link">
-                Login
+              <NavLink to="/" className="nav-link" onClick={logout}>
+                Logout
               </NavLink>
             </li>
 
-            <UncontrolledDropdown nav inNavbar>
+            {/* <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
                 Options
               </DropdownToggle>
@@ -72,7 +103,7 @@ export default function Navigation(props) {
                   <a onClick={e => logout()}>Logout</a>
                 </DropdownItem>
               </DropdownMenu>
-            </UncontrolledDropdown>
+            </UncontrolledDropdown> */}
           </Nav>
         </Collapse>
       </Navbar>
