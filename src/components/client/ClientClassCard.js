@@ -113,7 +113,7 @@ function ClientClassCard(props) {
     console.log(searchby);
   };
 
-  const baseUrl = "https://bw4-anywhere-fitness.herokuapp.com"
+  const baseUrl = "https://bw4-anywhere-fitness.herokuapp.com";
 
   useEffect(() => {
     withAuth()
@@ -125,7 +125,7 @@ function ClientClassCard(props) {
       .catch(error => {
         alert(error);
       });
-  }, [setFilteredClass]);
+  }, [setFilteredClass.length]);
 
   function reserveClass(classID) {
     const payload = {
@@ -168,10 +168,10 @@ function ClientClassCard(props) {
           }}
         />
       </div>
-      <div className="d-flex flex-row justify-content-between">
+      <div className="d-flex flex-row justify-content-between flex-wrap">
         {filteredClass.map(iClass => {
           return (
-            <div className="card mb-2 mr-2 w-50" key={iClass.id}>
+            <div className="card mb-2 mr-2" key={iClass.id}>
               <div className="card-body">
                 <div className="d-flex flex-row justify-content-between">
                   <h5 className="card-title">Fitness Class</h5>
@@ -181,18 +181,28 @@ function ClientClassCard(props) {
                     {iClass.location}
                   </p>
                 </div>
+
                 <p className="card-text">
                   <span className="text-warning">
                     <i class="fa fa-calendar" aria-hidden="true"></i>{" "}
-                    {iClass.date}
+                    {iClass.date.slice(0, 10)}
                     {"  "}
                     <i class="fa fa-clock-o" aria-hidden="true"></i>{" "}
-                    {iClass.startTime}
+                    {iClass.startTime.slice(0, 5)}
                   </span>
                 </p>
-                <h6 className="card-subtitle mb-2 text-info text-capitalize">
-                  {iClass.intensityLevel}
-                </h6>
+
+                <div className="d-flex flex-row justify-content-between">
+                  <h6 className="text-capitalize">{iClass.intensityLevel}</h6>
+                  <p>
+                    <i class="fa fa-hourglass-start" aria-hidden="true"></i>{" "}
+                    {iClass.duration} Minutes
+                  </p>
+                  <p>
+                    <i class="fa fa-user" aria-hidden="true"></i>{" "}
+                    {iClass.instructorName}
+                  </p>
+                </div>
                 <p className="card-text">{iClass.description}</p>
                 <div className="d-flex flex-row justify-content-between">
                   <p className="text-primary">

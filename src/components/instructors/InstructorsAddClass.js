@@ -6,7 +6,6 @@ import axios from "axios";
 import withAuth from "../../axios";
 
 function InstructorsAddClass(props) {
-
   return (
     <Form>
       <div className="form-group">

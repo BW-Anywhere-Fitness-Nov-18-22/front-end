@@ -19,12 +19,12 @@ function InstructorClassCard() {
       .then(response => {
         // debugger;
         setiClasses(response.data);
-        alert("ClassCardSUCC" + response.data.message);
+        // alert("ClassCardSUCC" + response.data.message);
       })
       .catch(error => {
         alert("ClassCardERR" + error);
       });
-  }, []);
+  }, [iClasses.length]);
 
   function deleteClass(classID) {
     withAuth()
@@ -58,19 +58,28 @@ function InstructorClassCard() {
             <div className="d-flex flex-row justify-content-between">
               <h5 className="card-title">Fitness Class</h5>
               <p className="text-capitalize">{iClass.type}</p>
-              <p className="text-capitalize">{iClass.location}</p>
+              <p className="text-capitalize">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>{" "}
+                {iClass.location}
+              </p>
             </div>
             <p className="card-text">
-              <span className="text-warning">{iClass.startTime}</span>
+              <span className="text-warning">
+                <i class="fa fa-calendar" aria-hidden="true"></i>{" "}
+                {iClass.date.slice(0, 10)}
+                {"  "}
+                <i class="fa fa-clock-o" aria-hidden="true"></i>{" "}
+                {iClass.startTime.slice(0, 5)}
+              </span>
             </p>
-            <h6 className="card-subtitle mb-2 text-info text-capitalize">
-              {iClass.intensityLevel}
-            </h6>
-            {/* <p className="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content. Some quick example text to build on
-              the card title and make up the bulk of the card's content
-            </p> */}
+            <div className="d-flex flex-row justify-content-between">
+              <h6 className="text-capitalize">{iClass.intensityLevel}</h6>
+              <p>
+                <i class="fa fa-hourglass-start" aria-hidden="true"></i>{" "}
+                {iClass.duration} Minutes
+              </p>
+            </div>
+            <p className="card-text">{iClass.description}</p>
             <div className="d-flex flex-row justify-content-between">
               <p className="text-primary">
                 {iClass.registeredAttendees}/{iClass.maxClassSize}
