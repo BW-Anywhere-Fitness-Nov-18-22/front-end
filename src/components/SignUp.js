@@ -11,6 +11,7 @@ const baseUrl =
 function SignUp(props) {
     
   return (
+    <div className="d-flex flex-row justify-content-center align-items-center">
     <div className="SignUp-Container">
       <Form>
         <div className="form-group">
@@ -64,9 +65,10 @@ function SignUp(props) {
           />
         </div>
         <div className="text-right">
-          <Button type="submit">Submit</Button>
+          <Button type="submit" className="btn" variant="dark">Submit</Button>
         </div>
       </Form>
+    </div>
     </div>
   );
 }

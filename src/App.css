@@ -8,6 +8,18 @@
   
 }
 
+.slogan {
+  font-family: 'Roboto', sans-serif;
+
+  width: 100vmin;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
 .App-logo-container {
   /* height: auto; 
   width: auto; 
@@ -42,6 +54,19 @@
 .SignUp-Container {
   margin: 5%;
   padding: 3%;
-  background: rgb(245, 102, 102);
+  background: rgb(232, 2, 2);
   border-radius: 5px;
+  width: 40%;
+  min-width: 400px;
+  
 }
+
+a {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.btn {
+  background-color: black;
+}
+
+
