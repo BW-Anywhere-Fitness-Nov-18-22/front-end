@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "reactstrap";
 import { withFormik, Form, Field } from "formik";
 import axios from "axios";
+import AFLogoFxn from "./AFLogo";
 
 const baseUrl =
   process.env.NODE_ENV === "production"
@@ -10,38 +11,41 @@ const baseUrl =
 
 function Login(props) {
   return (
-    <div className="d-flex flex-row justify-content-center align-items-center">
-    <div className="SignUp-Container">
-      <Form>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <Field
-            className="form-control"
-            type="email"
-            name="email"
-            id="email"
-            placeholder="JonDoe@gmail.com"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <Field
-            className="form-control"
-            type="password"
-            name="password"
-            id="password"
-            placeholder="$PAssword124"
-          />
-        </div>
-        <div className="form-group">
-          {/* <label htmlFor="instructorCode">instructorCode:</label>
+    <div className="d-flex flex-column justify-content-center align-items-center">
+      <AFLogoFxn />
+      <div className="SignUp-Container">
+        <Form>
+          <div className="form-group">
+            <label htmlFor="email">Email:</label>
+            <Field
+              className="form-control"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="JonDoe@gmail.com"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password:</label>
+            <Field
+              className="form-control"
+              type="password"
+              name="password"
+              id="password"
+              placeholder="$PAssword124"
+            />
+          </div>
+          <div className="form-group">
+            {/* <label htmlFor="instructorCode">instructorCode:</label>
                     <Field className="form-control" type="instructorCode" name="instructorCode" id="instructorCode" placeholder="(Instructors Only)" /> */}
-        </div>
-        <div className="text-right">
-          <Button type="submit" class="dark">Submit</Button>
-        </div>
-      </Form>
-    </div>
+          </div>
+          <div className="text-right">
+            <Button type="submit" class="dark">
+              Submit
+            </Button>
+          </div>
+        </Form>
+      </div>
     </div>
   );
 }
@@ -69,7 +73,7 @@ const LoginWFormik = withFormik({
             ? "/dashboard/client"
             : "/dashboard/instructor";
         tools.props.history.push(landingUrl);
-        alert(response.data.message)
+        alert(response.data.message);
       })
       .catch(error => {
         alert(error);
