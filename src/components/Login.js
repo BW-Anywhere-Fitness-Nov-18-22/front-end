@@ -5,10 +5,7 @@ import axios from "axios";
 import AFLogoFxn from "./AFLogo";
 import Navigation from "./Header";
 
-const baseUrl =
-  process.env.NODE_ENV === "production"
-    ? "https://bw4-anywhere-fitness.herokuapp.com"
-    : "http://localhost:4000";
+const baseUrl = "https://bw4-anywhere-fitness.herokuapp.com";
 
 function Login(props) {
   return (

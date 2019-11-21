@@ -9,10 +9,7 @@ function ClientClassEditCard() {
 
   const [regClasses, setRegClasses] = useState([]);
 
-  const baseUrl =
-    process.env.NODE_ENV === "production"
-      ? "https://bw4-anywhere-fitness.herokuapp.com"
-      : "http://localhost:4000";
+  const baseUrl = "https://bw4-anywhere-fitness.herokuapp.com";
 
   useEffect(() => {
     withAuth()
@@ -34,10 +31,10 @@ function ClientClassEditCard() {
   }
 
   return (
-    <div>
+    <div className="d-flex flex-row justify-content-between">
       {regClasses.map(regClass => {
         return (
-          <div className="card mb-4" key={regClass.classId}>
+          <div className="card mb-2 mr-2 w-50" key={regClass.classId}>
             <div className="card-body">
               <div className="d-flex flex-row justify-content-between">
                 <h5 className="card-title">Fitness Class Name</h5>

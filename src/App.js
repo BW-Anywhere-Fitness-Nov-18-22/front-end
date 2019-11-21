@@ -13,45 +13,43 @@ function App() {
   return (
     <div>
       <Route
-        exact path="/"
+        exact
+        path="/"
         render={props => {
           return <LoginWFormik {...props} />;
         }}
       />
 
       <Route
-        exact path="/register"
+        exact
+        path="/register"
         render={props => {
           return <SignUpWFormik {...props} />;
         }}
       />
 
-      <Route
-        exact path="/overview/client"
-        render={props => {
-          return <ClientOverview {...props} />;
-        }}
+      <PrivateRoute
+        component={ClientDashboard}
+        exact
+        path="/dashboard/client"
       />
 
-      <Route
-        exact path="/overview/instructor"
-        render={props => {
-          return <InstructorOverview {...props} />;
-        }}
+      <PrivateRoute
+        component={InstructorDashboard}
+        exact
+        path="/dashboard/instructor"
       />
 
-      <Route
-        exact path="/dashboard/client"
-        render={props => {
-          return <ClientDashboard {...props} />;
-        }}
+      <PrivateRoute
+        component={ClientOverview}
+        exact
+        path="/overview/client"
       />
 
-      <Route
-        exact path="/dashboard/instructor"
-        render={props => {
-          return <InstructorDashboard {...props} />;
-        }}
+      <PrivateRoute
+        component={InstructorOverview}
+        exact
+        path="/overview/instructor"
       />
     </div>
   );

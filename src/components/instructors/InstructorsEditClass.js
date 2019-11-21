@@ -60,7 +60,7 @@ function InstructorsEditClass(props) {
         >
           <option>30 Minutes</option>
           <option>45 Minutes</option>
-          <option>1 Hour</option>
+          <option>60 Minutes</option>
         </Field>
       </div>
 
@@ -113,11 +113,8 @@ const InstructorsEditClassWFormik = withFormik({
     intensityLevel: Yup.string().required("Select a intensity level")
   }),
   handleSubmit(values, tools) {
-    const baseUrl =
-      process.env.NODE_ENV === "production"
-        ? "https://bw4-anywhere-fitness.herokuapp.com"
-        : "http://localhost:4000";
-
+    const baseUrl = "https://bw4-anywhere-fitness.herokuapp.com";
+    
     const payload = {
       type: values.classType,
       date: values.startTime.slice(0, 10),
@@ -134,9 +131,9 @@ const InstructorsEditClassWFormik = withFormik({
       .then(res => {
         tools.resetForm();
         tools.props.toggle();
-        alert("EditClass" + res.data.message)
+        alert(res.data.message)
       })
-      .catch(err => {alert("EditClassERR" + err)});
+      .catch(err => {alert(err)});
   }
 })(InstructorsEditClass);
 

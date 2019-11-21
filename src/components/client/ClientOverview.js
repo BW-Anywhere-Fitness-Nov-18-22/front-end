@@ -1,20 +1,24 @@
 import React from "react";
-import Overview from "../Overview";
-import { Button } from "reactstrap";
-import { NavLink } from "react-router-dom";
+import { Button, Jumbotron } from "reactstrap";
+import { Link } from "react-router-dom";
 
 export default props => {
   return (
-    <>
-      <h1>Hello User!</h1>
-      <Overview />
-      <div className="text-right">
-        <Button>
-          <NavLink to="/dashboard/client" className="nav-link">
-            Dashboard
-          </NavLink>
-        </Button>
-      </div>
-    </>
+    <Jumbotron className="mt-5">
+      <h3>Welcome to Anywhere Fitness</h3>
+
+      <h5>As a user, you can..</h5>
+      <ul>
+        <li>Register for a class by clicking the sign-up button</li>
+        <li>
+          Unregister for a class by clicking the cancel reservation button in my
+          classes tab
+        </li>
+      </ul>
+
+      <Link to="/dashboard/client">
+        <Button color="danger" size="lg">Close</Button>
+      </Link>
+    </Jumbotron>
   );
 };

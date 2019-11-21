@@ -113,10 +113,7 @@ function ClientClassCard(props) {
     console.log(searchby);
   };
 
-  const baseUrl =
-    process.env.NODE_ENV === "production"
-      ? "https://bw4-anywhere-fitness.herokuapp.com"
-      : "http://localhost:4000";
+  const baseUrl = "https://bw4-anywhere-fitness.herokuapp.com"
 
   useEffect(() => {
     withAuth()
@@ -171,42 +168,49 @@ function ClientClassCard(props) {
           }}
         />
       </div>
-      {filteredClass.map(iClass => {
-        return (
-          <div className="card mb-4" key={iClass.id}>
-            <div className="card-body">
-              <div className="d-flex flex-row justify-content-between">
-                <h5 className="card-title">Fitness Class</h5>
-                <p className="text-capitalize">{iClass.type}</p>
-                <p className="text-capitalize">{iClass.location}</p>
-              </div>
-              <p className="card-text">
-                <span className="text-warning">{iClass.startTime}</span>
-              </p>
-              <h6 className="card-subtitle mb-2 text-info text-capitalize">
-                {iClass.intensityLevel}
-              </h6>
-              {/* <p className="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content. Some quick example text to build
-                on the card title and make up the bulk of the card's content
-              </p> */}
-              <div className="d-flex flex-row justify-content-between">
-                <p className="text-primary">
-                  {iClass.registeredAttendees}/{iClass.maxClassSize}
+      <div className="d-flex flex-row justify-content-between">
+        {filteredClass.map(iClass => {
+          return (
+            <div className="card mb-2 mr-2 w-50" key={iClass.id}>
+              <div className="card-body">
+                <div className="d-flex flex-row justify-content-between">
+                  <h5 className="card-title">Fitness Class</h5>
+                  <p className="text-capitalize">{iClass.type}</p>
+                  <p className="text-capitalize">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>{" "}
+                    {iClass.location}
+                  </p>
+                </div>
+                <p className="card-text">
+                  <span className="text-warning">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>{" "}
+                    {iClass.date}
+                    {"  "}
+                    <i class="fa fa-clock-o" aria-hidden="true"></i>{" "}
+                    {iClass.startTime}
+                  </span>
                 </p>
-                <a
-                  href="#"
-                  className="btn btn-success"
-                  onClick={e => reserveClass(iClass.id)}
-                >
-                  Sign up
-                </a>
+                <h6 className="card-subtitle mb-2 text-info text-capitalize">
+                  {iClass.intensityLevel}
+                </h6>
+                <p className="card-text">{iClass.description}</p>
+                <div className="d-flex flex-row justify-content-between">
+                  <p className="text-primary">
+                    {iClass.registeredAttendees}/{iClass.maxClassSize}
+                  </p>
+                  <a
+                    href="#"
+                    className="btn btn-success"
+                    onClick={e => reserveClass(iClass.id)}
+                  >
+                    Sign up
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }
