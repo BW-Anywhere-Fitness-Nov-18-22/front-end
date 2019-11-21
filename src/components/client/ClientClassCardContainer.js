@@ -11,6 +11,8 @@ import classnames from "classnames";
 import ClientClassCard from "./ClientClassCard";
 import ClientClassEditCard from "./ClientClassEditCard";
 
+import SearchForm from "../SearchForm";
+
 function ClientClassCardContainer() {
   const [activeTab, setActiveTab] = useState("1");
 
@@ -18,6 +20,7 @@ function ClientClassCardContainer() {
     if (activeTab !== tab) setActiveTab(tab);
   };
   return (
+      
     <Container className="mt-4">
       <Nav tabs className="mb-4">
         <NavItem>
@@ -30,6 +33,7 @@ function ClientClassCardContainer() {
             Open Classes
           </NavLink>
         </NavItem>
+
         <NavItem>
           <NavLink
             className={classnames({ active: activeTab === "2" })}
@@ -43,6 +47,7 @@ function ClientClassCardContainer() {
       </Nav>
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">
+        <SearchForm />
           <ClientClassCard toggle={toggle}/>
         </TabPane>
         <TabPane tabId="2">
