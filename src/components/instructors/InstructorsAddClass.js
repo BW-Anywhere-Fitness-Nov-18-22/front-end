@@ -126,7 +126,6 @@ const InstructorsAddClassWFormik = withFormik({
       duration: values.duration,
       intensityLevel: values.intensityLevel,
       location: values.location,
-      registeredAttendees: 0,
       maxClassSize: values.maxClassSize
     };
 

@@ -134,9 +134,9 @@ const InstructorsEditClassWFormik = withFormik({
       .then(res => {
         tools.resetForm();
         tools.props.toggle();
-        alert(res.data.message)
+        alert("EditClass" + res.data.message)
       })
-      .catch(err => {alert(err)});
+      .catch(err => {alert("EditClassERR" + err)});
   }
 })(InstructorsEditClass);
 

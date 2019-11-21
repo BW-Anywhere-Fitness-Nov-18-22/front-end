@@ -22,26 +22,36 @@ function InstructorClassCard() {
       .then(response => {
         // debugger;
         setiClasses(response.data);
-        alert(response.data.message)
+        alert("ClassCardSUCC" + response.data.message);
       })
-      .catch(error => {alert(error)});
-  }, [iClasses]);
+      .catch(error => {
+        alert("ClassCardERR" + error);
+      });
+  }, []);
 
   function deleteClass(classID) {
-    withAuth().delete(baseUrl + "/api/instructor/class/" + classID);
+    withAuth()
+      .delete(baseUrl + "/api/instructor/class/" + classID)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
-function getCurrentClassdata(id) {
-  withAuth().get(baseUrl + "/api/instructor/class")
-  .then(response => {
-    const editClass = response.data.find(editClass => editClass.id == id);
-    console.log(editClass);
-    
-  }).catch(error => {
-    
-  })
-  toggle()
-}
+  function getCurrentClassdata(id) {
+    withAuth()
+      .get(baseUrl + "/api/instructor/class")
+      .then(response => {
+        const editClass = response.data.find(editClass => editClass.id == id);
+        console.log(editClass);
+      })
+      .catch(error => {
+        alert("Get Class Data" + error);
+      });
+    toggle();
+  }
 
   return (
     <div>
@@ -70,24 +80,27 @@ function getCurrentClassdata(id) {
               </p>
               <div className="text-right">
                 {/* // Edit class modal>>> */}
-              
-                  <a href="#" className="btn btn-primary mr-2" onClick={() => getCurrentClassdata(iClass.id)}>
-                    Edit
-                  </a>
-                  <Modal fade={false} isOpen={modal} toggle={toggle}>
-                    <ModalHeader>Edit Class</ModalHeader>
-                      <ModalBody>
-                        <InstructorsEditClassWFormik toggle={toggle} />
-                      </ModalBody>
-                  </Modal>
-                  <a
-                    href="#"
-                    className="btn btn-danger"
-                    onClick={e => deleteClass(iClass.id)}
-                  >
-                    Delete
-                  </a>
-  
+
+                <a
+                  href="#"
+                  className="btn btn-primary mr-2"
+                  onClick={e => getCurrentClassdata(iClass.id)}
+                >
+                  Edit
+                </a>
+                <Modal fade={false} isOpen={modal} toggle={toggle}>
+                  <ModalHeader>Edit Class</ModalHeader>
+                  <ModalBody>
+                    <InstructorsEditClassWFormik toggle={toggle} />
+                  </ModalBody>
+                </Modal>
+                <a
+                  href="#"
+                  className="btn btn-danger"
+                  onClick={e => deleteClass(iClass.id)}
+                >
+                  Delete
+                </a>
               </div>
             </div>
           </div>
