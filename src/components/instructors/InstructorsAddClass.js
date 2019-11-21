@@ -18,6 +18,16 @@ function InstructorsAddClass(props) {
           id="name"
         />
       </div>
+      <div className="form-group">
+        <label htmlFor="description">Description</label>
+        <Field
+          className="form-control"
+          component="textarea"
+          rows="4"
+          id="description"
+          name="description"
+        />
+      </div>
 
       <div className="form-group">
         <label htmlFor="type">Class Type</label>
@@ -60,7 +70,7 @@ function InstructorsAddClass(props) {
         >
           <option>30 Minutes</option>
           <option>45 Minutes</option>
-          <option>1 Hour</option>
+          <option>60 Minutes</option>
         </Field>
       </div>
 
@@ -103,7 +113,8 @@ const InstructorsAddClassWFormik = withFormik({
       startTime: "",
       duration: "30 Minutes",
       maxClassSize: "",
-      location: ""
+      location: "",
+      description: ""
     };
   },
 
@@ -126,7 +137,8 @@ const InstructorsAddClassWFormik = withFormik({
       duration: values.duration,
       intensityLevel: values.intensityLevel,
       location: values.location,
-      maxClassSize: values.maxClassSize
+      maxClassSize: values.maxClassSize,
+      description: values.description
     };
 
     withAuth()
