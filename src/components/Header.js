@@ -37,7 +37,7 @@ export default function Navigation(props) {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <li className="nav-item">
-              <a href="https://anywherelanding.now.sh/">
+              <a href="https://anywherelanding.now.sh/" className="nav-link">
                 Home
               </a>
             </li>
