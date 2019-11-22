@@ -24,7 +24,7 @@ function InstructorClassCard() {
       .catch(error => {
         alert("ClassCardERR" + error);
       });
-  }, [iClasses.length]);
+  }, [iClasses]);
 
   function deleteClass(classID) {
     withAuth()

@@ -125,7 +125,7 @@ function ClientClassCard(props) {
       .catch(error => {
         alert(error);
       });
-  }, [setFilteredClass.length]);
+  }, [setFilteredClass]);
 
   function reserveClass(classID) {
     const payload = {
