@@ -59,23 +59,23 @@ function InstructorClassCard() {
               <h5 className="card-title">Fitness Class</h5>
               <p className="text-capitalize">{iClass.type}</p>
               <p className="text-capitalize">
-                <i class="fa fa-map-marker" aria-hidden="true"></i>{" "}
+                <i className="fa fa-map-marker" aria-hidden="true"></i>{" "}
                 {iClass.location}
               </p>
             </div>
             <p className="card-text">
               <span className="text-secondary">
-                <i class="fa fa-calendar" aria-hidden="true"></i>{" "}
+                <i className="fa fa-calendar" aria-hidden="true"></i>{" "}
                 {iClass.date.slice(0, 10)}
                 {"  "}
-                <i class="fa fa-clock-o" aria-hidden="true"></i>{" "}
+                <i className="fa fa-clock-o" aria-hidden="true"></i>{" "}
                 {iClass.startTime.slice(0, 5)}
               </span>
             </p>
             <div className="d-flex flex-row justify-content-between">
               <h6 className="text-capitalize text-info">{iClass.intensityLevel}</h6>
               <p>
-                <i class="fa fa-hourglass-start" aria-hidden="true"></i>{" "}
+                <i className="fa fa-hourglass-start" aria-hidden="true"></i>{" "}
                 {iClass.duration} Minutes
               </p>
             </div>

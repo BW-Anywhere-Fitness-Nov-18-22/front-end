@@ -42,17 +42,17 @@ function ClientClassEditCard() {
                 <h5 className="card-title">Fitness Class</h5>
                 <p className="text-capitalize">{regClass.type}</p>
                 <p className="text-capitalize">
-                  <i class="fa fa-map-marker" aria-hidden="true"></i>{" "}
+                  <i className="fa fa-map-marker" aria-hidden="true"></i>{" "}
                   {regClass.location}
                 </p>
               </div>
 
               <p className="card-text">
                 <span className="text-secondary">
-                  <i class="fa fa-calendar" aria-hidden="true"></i>{" "}
+                  <i className="fa fa-calendar" aria-hidden="true"></i>{" "}
                   {regClass.date.slice(0, 10)}
                   {"  "}
-                  <i class="fa fa-clock-o" aria-hidden="true"></i>{" "}
+                  <i className="fa fa-clock-o" aria-hidden="true"></i>{" "}
                   {regClass.startTime.slice(0, 5)}
                 </span>
               </p>
@@ -62,11 +62,11 @@ function ClientClassEditCard() {
                   {regClass.intensityLevel}
                 </h6>
                 <p>
-                  <i class="fa fa-hourglass-start" aria-hidden="true"></i>{" "}
+                  <i className="fa fa-hourglass-start" aria-hidden="true"></i>{" "}
                   {regClass.duration} Minutes
                 </p>
                 <p>
-                  <i class="fa fa-user" aria-hidden="true"></i>{" "}
+                  <i className="fa fa-user" aria-hidden="true"></i>{" "}
                   {regClass.instructorName}
                 </p>
               </div>
