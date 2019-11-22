@@ -33,7 +33,7 @@ function ClientClassEditCard() {
   }
 
   return (
-    <div className="d-flex flex-row justify-content-between">
+    <div className="d-flex flex-row justify-content-between flex-wrap">
       {regClasses.map(regClass => {
         return (
           <div className="card mb-2 mr-2" key={regClass.classId}>
