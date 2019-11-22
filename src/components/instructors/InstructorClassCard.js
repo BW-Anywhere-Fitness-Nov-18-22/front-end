@@ -51,7 +51,7 @@ function InstructorClassCard() {
   }
 
   return (
-    <div className="d-flex flex-row justify-content-between">
+    <div className="d-flex flex-row justify-content-between flex-wrap">
       {iClasses.map(iClass => (
         <div className="card mb-2 mr-2 w-50" key={iClass.id}>
           <div className="card-body">
