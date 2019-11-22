@@ -64,7 +64,7 @@ function InstructorClassCard() {
               </p>
             </div>
             <p className="card-text">
-              <span className="text-warning">
+              <span className="text-secondary">
                 <i class="fa fa-calendar" aria-hidden="true"></i>{" "}
                 {iClass.date.slice(0, 10)}
                 {"  "}
@@ -73,7 +73,7 @@ function InstructorClassCard() {
               </span>
             </p>
             <div className="d-flex flex-row justify-content-between">
-              <h6 className="text-capitalize">{iClass.intensityLevel}</h6>
+              <h6 className="text-capitalize text-info">{iClass.intensityLevel}</h6>
               <p>
                 <i class="fa fa-hourglass-start" aria-hidden="true"></i>{" "}
                 {iClass.duration} Minutes

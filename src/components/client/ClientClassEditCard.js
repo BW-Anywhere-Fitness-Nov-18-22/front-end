@@ -48,11 +48,13 @@ function ClientClassEditCard() {
               </div>
 
               <p className="card-text">
-                <i class="fa fa-calendar" aria-hidden="true"></i>{" "}
-                {regClass.date.slice(0, 10)}
-                {"  "}
-                <i class="fa fa-clock-o" aria-hidden="true"></i>{" "}
-                {regClass.startTime.slice(0, 5)}
+                <span className="text-secondary">
+                  <i class="fa fa-calendar" aria-hidden="true"></i>{" "}
+                  {regClass.date.slice(0, 10)}
+                  {"  "}
+                  <i class="fa fa-clock-o" aria-hidden="true"></i>{" "}
+                  {regClass.startTime.slice(0, 5)}
+                </span>
               </p>
 
               <div className="d-flex flex-row justify-content-between">
