@@ -1,5 +1,6 @@
 .logo {
-  width: 100vmin;
+  width: 300px;
+  margin-top: 50px;
 }
 
 .slogan {
@@ -21,7 +22,7 @@
 .SignUp-Container {
   margin: 5%;
   padding: 3%;
-  background: rgb(232, 2, 2);
+  background: #f8f9fa;
   border-radius: 5px;
   width: 40%;
   min-width: 400px;

@@ -125,7 +125,7 @@ function ClientClassCard(props) {
       .catch(error => {
         alert(error);
       });
-  }, [setFilteredClass.length]);
+  }, [setFilteredClass]);
 
   function reserveClass(classID) {
     const payload = {
@@ -183,7 +183,7 @@ function ClientClassCard(props) {
                 </div>
 
                 <p className="card-text">
-                  <span className="text-warning">
+                  <span className="text-secondary">
                     <i class="fa fa-calendar" aria-hidden="true"></i>{" "}
                     {iClass.date.slice(0, 10)}
                     {"  "}
@@ -193,7 +193,7 @@ function ClientClassCard(props) {
                 </p>
 
                 <div className="d-flex flex-row justify-content-between">
-                  <h6 className="text-capitalize">{iClass.intensityLevel}</h6>
+                  <h6 className="text-info text-capitalize">{iClass.intensityLevel}</h6>
                   <p>
                     <i class="fa fa-hourglass-start" aria-hidden="true"></i>{" "}
                     {iClass.duration} Minutes
