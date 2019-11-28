@@ -58,16 +58,12 @@ function ClientClassEditCard() {
               </p>
 
               <div className="d-flex flex-row justify-content-between">
-                <h6 className="card-subtitle mb-2 text-info text-capitalize">
+                <h6 className="mb-2 text-info text-capitalize">
                   {regClass.intensityLevel}
                 </h6>
                 <p>
                   <i className="fa fa-hourglass-start" aria-hidden="true"></i>{" "}
                   {regClass.duration} Minutes
-                </p>
-                <p>
-                  <i className="fa fa-user" aria-hidden="true"></i>{" "}
-                  {regClass.instructorName}
                 </p>
               </div>
               <p className="card-text">{regClass.description}</p>
