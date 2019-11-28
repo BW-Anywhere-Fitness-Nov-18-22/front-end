@@ -38,19 +38,19 @@ function ClientClassCard(props) {
       );
     }
 
-    if (searchby === "duration") {
-      setFilteredClass(
-        iClasses.filter(iClass => {
-          if (
-            iClass.duration
-              .toLocaleLowerCase()
-              .indexOf(e.target.value.toLocaleLowerCase()) !== -1
-          ) {
-            return iClass;
-          }
-        })
-      );
-    }
+    // if (searchby === "duration") {
+    //   setFilteredClass(
+    //     iClasses.filter(iClass => {
+    //       if (
+    //         iClass.duration
+    //           .toLocaleLowerCase()
+    //           .indexOf(e.target.value.toLocaleLowerCase()) !== -1
+    //       ) {
+    //         return iClass;
+    //       }
+    //     })
+    //   );
+    // }
 
     if (searchby === "type") {
       setFilteredClass(
@@ -100,8 +100,8 @@ function ClientClassCard(props) {
       setSearchby("startTime");
     } else if (e.target.value === "Date") {
       setSearchby("date");
-    } else if (e.target.value === "Duration") {
-      setSearchby("duration");
+      // } else if (e.target.value === "Duration") {
+      //   setSearchby("duration");
     } else if (e.target.value === "Type") {
       setSearchby("type");
     } else if (e.target.value === "Intensity Level") {
@@ -153,7 +153,7 @@ function ClientClassCard(props) {
         >
           <option>Time</option>
           <option>Date</option>
-          <option>Duration</option>
+          {/* <option>Duration</option> */}
           <option>Type</option>
           <option>Intensity Level</option>
           <option>Location</option>
@@ -193,7 +193,9 @@ function ClientClassCard(props) {
                 </p>
 
                 <div className="d-flex flex-row justify-content-between">
-                  <h6 className="text-info text-capitalize">{iClass.intensityLevel}</h6>
+                  <h6 className="text-info text-capitalize">
+                    {iClass.intensityLevel}
+                  </h6>
                   <p>
                     <i className="fa fa-hourglass-start" aria-hidden="true"></i>{" "}
                     {iClass.duration} Minutes
